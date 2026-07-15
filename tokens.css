@@ -4,20 +4,20 @@
    Namen liggen vast (gedeeld vocabulaire met de designer);
    wijzig namen niet, alleen waarden.
 
-   v0.3 — kleuren en fonts zijn nu de definitieve waarden
-   zoals aangeleverd door de designer (juli 2026), niet langer
-   benaderingen uit de PDF.
+   v0.5 — kleurpalet gelijkgetrokken met de logo-kleuren
+   (designer, juli 2026): oranje #fd8144, paars/aubergine #452846.
+   Fonts en kleuren zijn definitief; geen benaderingen meer.
    ========================================================== */
 :root {
   /* --- Kleur: kern (definitief) --- */
   --nectar-aubergine-900: #2E1B33;   /* afgeleide donkere tint */
-  --nectar-aubergine-700: #412944;   /* primaire merkkleur (paars) */
+  --nectar-aubergine-700: #452846;   /* primaire merkkleur (paars/aubergine) — logo */
   --nectar-aubergine-500: #5C4066;   /* afgeleide tint — info/hover */
   --nectar-aubergine-300: #9E8BB8;   /* afgeleide lila tint — borders/markers */
   --nectar-aubergine-100: #E6DFEE;   /* afgeleide zachte tint */
 
   --nectar-oranje-600: #D9661F;      /* donkerder oranje voor kleine tekst (AA) — afgeleid */
-  --nectar-oranje-500: #ef8a53;      /* primair accent / CTA */
+  --nectar-oranje-500: #fd8144;      /* primair accent / CTA — logo */
   --nectar-oranje-100: #FDE4D2;      /* afgeleide zachte tint */
 
   --nectar-creme-100: #fcf8f0;       /* standaard achtergrond */
@@ -27,17 +27,16 @@
 
   /* --- Kleur: grote sectievlakken --- */
   --nectar-groen-600: #435c52;       /* bosgroen — groot sectievlak */
-  /* (het tweede grote vlak is paars: --nectar-aubergine-700 #412944) */
+  /* (het tweede grote vlak is paars/aubergine: --nectar-aubergine-700 #452846) */
 
   /* --- Kleur: 4 kleine kleurvlakken / categorieën (definitief) --- */
   --nectar-groen-300:      #9ac191;  /* appelgroen — categorie 1 */
   --nectar-luchtblauw-400: #88a4bc;  /* luchtblauw — categorie 2 */
-  --nectar-lila-400:       #a498b8;  /* lavendel   — categorie 3 */
+  --nectar-lila-400:       #a397b7;  /* lavendel   — categorie 3 */
   --nectar-geel-400:       #e2c076;  /* zonneschijn — categorie 4 */
 
   /* --- Kleur: tekst/icoon-kleuren óp de kleurvlakken ---
      Additief. Zie styleguide § Kleurvlakken voor de toegestane combinaties. */
-  --nectar-aubergine-vlak: #48344c;  /* bronspec voor het grote aubergine-tekstvlak — te bevestigen */
   --nectar-groen-donker:   #30423a;  /* tekst/icoon op appelgroen */
   --nectar-blauw-donker:   #2a353d;  /* tekst/icoon op luchtblauw */
   --nectar-bruin:          #3f3121;  /* tekst/icoon op zonneschijn */

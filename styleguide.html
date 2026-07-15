@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nectar Design Guide — v0.4</title>
+<title>Nectar Design Guide — v0.6</title>
 <link rel="stylesheet" href="./tokens.css">
 <style>
 /* ==========================================================
@@ -281,6 +281,45 @@ section { padding: var(--space-16) var(--space-6); border-bottom: 1px solid var(
 .skeleton { background: var(--nectar-wit); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: var(--space-4); width: 220px; display: flex; flex-direction: column; gap: var(--space-3); }
 .skeleton-line { border-radius: var(--radius-sm); background: var(--nectar-creme-50); border: 1px solid var(--nectar-aubergine-100); }
 
+/* App-shell: sidebar + topbar */
+.shell { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-raised); background: var(--nectar-creme-50); display: grid; grid-template-columns: 240px 1fr; min-height: 440px; }
+.shell-side { background: var(--nectar-aubergine-700); color: var(--nectar-creme-100); padding: var(--space-6) var(--space-4); display: flex; flex-direction: column; gap: var(--space-1); }
+.shell-brand { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-6); }
+.shell-collapse { color: var(--nectar-aubergine-300); font-size: var(--text-lg); cursor: pointer; line-height: 1; }
+.org-switcher { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); background: var(--nectar-aubergine-500); margin-bottom: var(--space-4); cursor: pointer; }
+.org-avatar { width: 32px; height: 32px; border-radius: var(--radius-sm); background: var(--nectar-oranje-500); flex: none; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; color: var(--nectar-aubergine-900); font-size: var(--text-sm); }
+.org-switcher .grow { flex: 1; min-width: 0; }
+.org-switcher .org-name { font-family: var(--font-body); font-weight: 700; font-size: var(--text-sm); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.org-switcher .org-sub { font-size: var(--text-xs); color: var(--nectar-aubergine-300); }
+.side-label { font-family: var(--font-accent); font-weight: 600; font-size: var(--text-xs); text-transform: lowercase; letter-spacing: 0.08em; color: var(--nectar-aubergine-300); padding: var(--space-2) var(--space-3) var(--space-1); }
+.side-nav-item { font-size: var(--text-sm); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); color: var(--nectar-aubergine-100); font-family: var(--font-body); font-weight: 700; cursor: pointer; }
+.side-nav-item.active { background: var(--nectar-aubergine-500); color: var(--nectar-wit); border-left: 3px solid var(--nectar-oranje-500); }
+.upgrade-card { margin-top: auto; background: var(--nectar-oranje-500); border-radius: var(--radius-md); padding: var(--space-3); display: flex; flex-direction: column; gap: var(--space-1); cursor: pointer; color: var(--nectar-aubergine-900); }
+.upgrade-card .title { font-family: var(--font-accent); font-weight: 700; font-size: var(--text-sm); }
+.upgrade-card .sub { font-size: var(--text-xs); }
+.shell-main { display: flex; flex-direction: column; min-width: 0; }
+.saved-banner { background: var(--color-success); display: flex; align-items: center; justify-content: center; gap: var(--space-2); height: 32px; color: var(--nectar-wit); font-size: var(--text-xs); }
+.saved-banner .lbl { font-family: var(--font-accent); font-weight: 500; }
+.shell-topbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-3) var(--space-6); background: var(--nectar-wit); border-bottom: 1px solid var(--nectar-aubergine-100); }
+.breadcrumb { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); min-width: 0; }
+.breadcrumb .muted { color: var(--color-text-muted); white-space: nowrap; }
+.breadcrumb .sep { color: var(--nectar-aubergine-300); }
+.breadcrumb .current { color: var(--color-heading); font-weight: 500; white-space: nowrap; }
+.topbar-icons { display: flex; align-items: center; gap: var(--space-2); }
+.icon-btn { width: 36px; height: 36px; border-radius: var(--radius-pill); display: grid; place-items: center; cursor: pointer; color: var(--nectar-aubergine-700); position: relative; }
+.icon-badge { position: absolute; top: 4px; right: 4px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: var(--radius-pill); background: var(--nectar-oranje-500); color: var(--nectar-aubergine-900); font-size: 10px; font-weight: 700; display: grid; place-items: center; font-family: var(--font-accent); }
+.topbar-divider { width: 1px; height: 24px; background: var(--nectar-aubergine-100); margin: 0 var(--space-1); }
+.user-chip { display: flex; align-items: center; gap: var(--space-2); cursor: pointer; }
+.user-chip .avatar { width: 32px; height: 32px; border-radius: var(--radius-pill); background: var(--nectar-aubergine-100); flex: none; }
+.user-chip .name { font-size: var(--text-sm); font-weight: 500; color: var(--color-heading); }
+.shell-content { padding: var(--space-6); flex: 1; }
+.shell-content h4 { font-family: var(--font-display); font-weight: 700; font-size: var(--text-xl); margin: 0 0 var(--space-4); color: var(--color-heading); }
+.mini-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--space-4); }
+.mini-kpi { background: var(--nectar-wit); border-radius: var(--radius-md); padding: var(--space-4); box-shadow: var(--shadow-card); }
+.mini-kpi .lbl { font-family: var(--font-accent); font-size: var(--text-xs); color: var(--color-text-muted); }
+.mini-kpi .num { font-family: var(--font-display); font-weight: 700; font-size: var(--text-2xl); color: var(--color-heading); }
+@media (max-width: 640px) { .shell { grid-template-columns: 1fr; } }
+
 table { border-collapse: collapse; width: 100%; max-width: 60rem; font-size: var(--text-sm); }
 th, td { text-align: left; padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--nectar-aubergine-100); }
 th { font-family: var(--font-accent); }
@@ -290,11 +329,10 @@ th { font-family: var(--font-accent); }
 
 <header class="guide-header">
   <div class="inner">
-    <div class="logo-word">nectar <span class="hex">⬡</span></div>
-    <div class="tagline">laat je impact zien</div>
+    <img src="./assets/nectar-logo-wit.svg" alt="Nectar — laat je impact zien" style="display: block; width: 220px; height: auto;">
     <h1 style="margin-top: var(--space-8); color: var(--nectar-creme-100);">Design guide</h1>
     <p style="color: var(--nectar-aubergine-100);">Eén bron van waarheid voor de Nectar-huisstijl in website, app en rapporten. Kleuren en fonts zijn nu de <strong style="color: var(--nectar-creme-100);">definitieve merkwaarden</strong> zoals aangeleverd door de designer (juli 2026).</p>
-    <span class="version-pill">v0.4 — app-componenten (§09): knoppen, kaarten, tabs, modals, tabellen, save-bar, skeletons</span>
+    <span class="version-pill">v0.6 — app-shell (sidebar, org-switcher, topbar) in §09 · v0.5 kleurpalet gelijk aan logo</span>
   </div>
 </header>
 
@@ -322,8 +360,8 @@ th { font-family: var(--font-accent); }
 
     <h3>Kernkleuren</h3>
     <div class="swatch-grid">
-      <div class="swatch"><div class="chip" style="background:#412944"></div><div class="meta"><strong>Paars / Aubergine</strong>#412944 · primair merk · logo</div></div>
-      <div class="swatch"><div class="chip" style="background:#ef8a53"></div><div class="meta"><strong>Oranje</strong>#ef8a53 · accent · CTA · logo</div></div>
+      <div class="swatch"><div class="chip" style="background:#452846"></div><div class="meta"><strong>Paars / Aubergine</strong>#452846 · primair merk · logo</div></div>
+      <div class="swatch"><div class="chip" style="background:#fd8144"></div><div class="meta"><strong>Oranje</strong>#fd8144 · accent · CTA · logo</div></div>
       <div class="swatch"><div class="chip" style="background:#fcf8f0; border-bottom:1px solid #E6DFEE"></div><div class="meta"><strong>Crème</strong>#fcf8f0 · achtergrond</div></div>
       <div class="swatch"><div class="chip" style="background:#282d31"></div><div class="meta"><strong>Antraciet</strong>#282d31 · tekst op crème</div></div>
       <div class="swatch"><div class="chip" style="background:#435c52"></div><div class="meta"><strong>Groen</strong>#435c52 · groot sectievlak</div></div>
@@ -331,7 +369,7 @@ th { font-family: var(--font-accent); }
     </div>
 
     <div class="note" style="margin-top: var(--space-4);">
-      <strong>Let op — logo-asset:</strong> het aangeleverde <code>nectar-logo.svg</code> gebruikt <code>#fd8144</code> (oranje) en <code>#452846</code> (paars); dat wijkt licht af van de merkwaarden <code>#ef8a53</code> / <code>#412944</code>. Het SVG is as-is opgenomen in <code>./assets/</code>. Even bij de designer bevestigen welke waarden leidend zijn.
+      <strong>Paars/aubergine en oranje zijn gelijkgetrokken met de logo-kleuren</strong> (designer, juli 2026): <code>#452846</code> en <code>#fd8144</code>. Dit is de leidende set — de eerdere waarden <code>#412944</code>/<code>#ef8a53</code> zijn vervallen.
     </div>
 
     <h3 style="margin-top: var(--space-8);">Vier kleine kleurvlakken (categorieën)</h3>
@@ -339,7 +377,7 @@ th { font-family: var(--font-accent); }
     <div class="swatch-grid">
       <div class="swatch"><div class="chip" style="background:#9ac191"></div><div class="meta"><strong>Appelgroen · cat-1</strong>#9ac191</div></div>
       <div class="swatch"><div class="chip" style="background:#88a4bc"></div><div class="meta"><strong>Luchtblauw · cat-2</strong>#88a4bc</div></div>
-      <div class="swatch"><div class="chip" style="background:#a498b8"></div><div class="meta"><strong>Lavendel · cat-3</strong>#a498b8</div></div>
+      <div class="swatch"><div class="chip" style="background:#a397b7"></div><div class="meta"><strong>Lavendel · cat-3</strong>#a397b7</div></div>
       <div class="swatch"><div class="chip" style="background:#e2c076"></div><div class="meta"><strong>Zonneschijn · cat-4</strong>#e2c076</div></div>
     </div>
 
@@ -348,11 +386,10 @@ th { font-family: var(--font-accent); }
 
     <h4 style="font-family: var(--font-tech); font-weight: 400; margin: var(--space-6) 0 var(--space-3);">Grote vlakken</h4>
     <div class="pairing-grid">
-      <div class="pairing" style="background:#412944;">
-        <div class="pairing-name" style="color:#fcf8f0;">Paars / Aubergine · #412944</div>
-        <span class="pill" style="background:#fcf8f0; color:#412944;">crème #fcf8f0</span>
-        <span class="pill" style="background:transparent; color:#a498b8; border:1.5px solid #a498b8;">lavendel #a498b8</span>
-        <p style="color:#fcf8f0; font-size: var(--text-xs); margin: var(--space-3) 0 0; max-width:none;">Bronspec noemt <code style="color:#e2c076;">#48344c</code> voor dit tekstvlak — te bevestigen.</p>
+      <div class="pairing" style="background:#452846;">
+        <div class="pairing-name" style="color:#fcf8f0;">Paars / Aubergine · #452846</div>
+        <span class="pill" style="background:#fcf8f0; color:#452846;">crème #fcf8f0</span>
+        <span class="pill" style="background:transparent; color:#a397b7; border:1.5px solid #a397b7;">lavendel #a397b7</span>
       </div>
       <div class="pairing" style="background:#435c52;">
         <div class="pairing-name" style="color:#fcf8f0;">Groen · #435c52</div>
@@ -374,10 +411,10 @@ th { font-family: var(--font-accent); }
         <span class="pill" style="background:#fcf8f0; color:#2a353d;">crème #fcf8f0</span>
         <span class="pill" style="background:transparent; color:#2a353d; border:1.5px solid #2a353d;">donkerblauw #2a353d</span>
       </div>
-      <div class="pairing" style="background:#a498b8;">
-        <div class="pairing-name" style="color:#412944;">Lavendel · #a498b8</div>
-        <span class="pill" style="background:#fcf8f0; color:#412944;">crème #fcf8f0</span>
-        <span class="pill" style="background:transparent; color:#412944; border:1.5px solid #412944;">paars #412944</span>
+      <div class="pairing" style="background:#a397b7;">
+        <div class="pairing-name" style="color:#452846;">Lavendel · #a397b7</div>
+        <span class="pill" style="background:#fcf8f0; color:#452846;">crème #fcf8f0</span>
+        <span class="pill" style="background:transparent; color:#452846; border:1.5px solid #452846;">paars #452846</span>
       </div>
       <div class="pairing" style="background:#e2c076;">
         <div class="pairing-name" style="color:#3f3121;">Zonneschijn · #e2c076</div>
@@ -395,7 +432,7 @@ th { font-family: var(--font-accent); }
     </div>
 
     <div class="note" style="margin-top: var(--space-6);">
-      <strong>Toegankelijkheid:</strong> Oranje #ef8a53 op crème haalt géén AA-contrast voor kleine tekst. Gebruik oranje alleen voor grote koppen, knopvlakken en grafische elementen. Voor oranje lopende tekst en links: gebruik het donkerder Oranje #D9661F.
+      <strong>Toegankelijkheid:</strong> Oranje #fd8144 op crème haalt géén AA-contrast voor kleine tekst. Gebruik oranje alleen voor grote koppen, knopvlakken en grafische elementen. Voor oranje lopende tekst en links: gebruik het donkerder Oranje #D9661F.
     </div>
   </div>
 </section>
@@ -460,18 +497,38 @@ th { font-family: var(--font-accent); }
     <h2>Logo, hexagon &amp; chevron</h2>
 
     <h3>Logo</h3>
-    <p>Het logo bestaat uit een beeldmerk (honingraat + chevron) en een woordmerk. Gebruik het volledige logo waar mogelijk; het losse beeldmerk voor kleine of vierkante toepassingen (favicon, app-icoon). De bronbestanden staan in <code>./assets/</code>.</p>
+    <p>Het logo bestaat uit een beeldmerk (honingraat + chevron) en een woordmerk. Gebruik het volledige logo waar mogelijk; het losse beeldmerk voor kleine of vierkante toepassingen (favicon, app-icoon). Twee kleurvarianten, elk met een vaste toepassing. De bronbestanden staan in <code>./assets/</code>.</p>
+
+    <h4 style="font-family: var(--font-tech); font-weight: 400; margin: var(--space-4) 0 var(--space-3);">Gekleurd — alleen op crème</h4>
+    <p style="font-size: var(--text-sm); color: var(--color-text-muted);">De gekleurde variant (oranje #fd8144 + paars #452846) mag <strong>uitsluitend op de crème achtergrond</strong>, niet op kleurvlakken of donkere achtergronden.</p>
     <div class="logo-showcase">
       <div class="logo-card">
-        <img src="./assets/nectar-logo.svg" alt="Nectar logo — volledig woordmerk met beeldmerk" style="max-width: 320px; width: 100%; height: auto;">
+        <img src="./assets/nectar-logo.svg" alt="Nectar logo — volledig woordmerk met beeldmerk, gekleurd" style="max-width: 320px; width: 100%; height: auto;">
         <div class="logo-cap">Volledig logo · <code>nectar-logo.svg</code></div>
       </div>
       <div class="logo-card">
-        <img src="./assets/nectar-beeldmerk.svg" alt="Nectar beeldmerk — honingraat met chevron" style="width: 108px; height: auto;">
+        <img src="./assets/nectar-beeldmerk.svg" alt="Nectar beeldmerk — honingraat met chevron, gekleurd" style="width: 108px; height: auto;">
         <div class="logo-cap">Beeldmerk · <code>nectar-beeldmerk.svg</code></div>
       </div>
     </div>
-    <p style="font-size: var(--text-sm); color: var(--color-text-muted);">Plaats het logo op crème of op een rustig vlak met voldoende vrije ruimte (minimaal de hoogte van het beeldmerk rondom). Op donkere vlakken een crème/witte versie gebruiken (nog aan te leveren).</p>
+
+    <h4 style="font-family: var(--font-tech); font-weight: 400; margin: var(--space-8) 0 var(--space-3);">Crème — op kleurvlakken</h4>
+    <p style="font-size: var(--text-sm); color: var(--color-text-muted);">De crème variant (#fcf8f0) mag op de <strong>oranje, paarse en groene</strong> kleurvlakken (en verder op donkere achtergronden).</p>
+    <div class="logo-showcase">
+      <div class="logo-card" style="background: var(--nectar-aubergine-700); border-color: var(--nectar-aubergine-700);">
+        <img src="./assets/nectar-logo-wit.svg" alt="Nectar logo — crème, op paars vlak" style="max-width: 320px; width: 100%; height: auto;">
+        <div class="logo-cap" style="color: var(--nectar-aubergine-100);">Volledig logo · <code style="color: var(--nectar-creme-100);">nectar-logo-wit.svg</code> · op paars</div>
+      </div>
+      <div class="logo-card" style="background: var(--nectar-groen-600); border-color: var(--nectar-groen-600);">
+        <img src="./assets/nectar-beeldmerk-wit.svg" alt="Nectar beeldmerk — crème, op groen vlak" style="width: 108px; height: auto;">
+        <div class="logo-cap" style="color: #cfe0d5;">Beeldmerk · <code style="color: var(--nectar-creme-100);">nectar-beeldmerk-wit.svg</code> · op groen</div>
+      </div>
+      <div class="logo-card" style="background: var(--nectar-oranje-500); border-color: var(--nectar-oranje-500);">
+        <img src="./assets/nectar-beeldmerk-wit.svg" alt="Nectar beeldmerk — crème, op oranje vlak" style="width: 108px; height: auto;">
+        <div class="logo-cap" style="color: var(--nectar-creme-100);">Beeldmerk · op oranje</div>
+      </div>
+    </div>
+    <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-4);">Plaats het logo altijd met voldoende vrije ruimte (minimaal de hoogte van het beeldmerk rondom). De koptekst van deze gids gebruikt de crème-variant op het paarse vlak.</p>
 
     <h3 style="margin-top: var(--space-8);">Hexagon &amp; chevron</h3>
     <p>De zeshoek (honingraat, uit het logo) en de chevron (beweging, vooruitgang) zijn de twee signatuurvormen. Gebruik ze voor foto-maskers, stap-markers en decoratieve clusters — maximaal één cluster per scherm.</p>
@@ -598,7 +655,7 @@ th { font-family: var(--font-accent); }
     <h3>App-shell</h3>
     <div class="app-frame" style="margin-bottom: var(--space-6);">
       <nav class="app-side" aria-label="Hoofdnavigatie">
-        <div class="logo-word">nectar <span class="hex">⬡</span></div>
+        <img src="./assets/nectar-logo-wit.svg" alt="Nectar" style="width: 120px; height: auto; margin-bottom: var(--space-6);">
         <span class="nav-item">Overzicht</span>
         <span class="nav-item active">Impact in beeld</span>
         <span class="nav-item">Sector in beeld</span>
@@ -651,7 +708,57 @@ th { font-family: var(--font-accent); }
   <div class="inner">
     <span class="eyebrow">09 · app-componenten</span>
     <h2>App-componenten</h2>
-    <p>Concrete uitwerking van §08: de componenten die de app vandaag hardgecodeerd tekent — knoppen, kaarten, tabs, modals, tabellen, save-bar en laadstatus — hertekend op de bestaande tokens. Puur additief: geen nieuwe tokenwaarden, alleen nieuwe componentregels/-klassen.</p>
+    <p>Concrete uitwerking van §08: de componenten die de app vandaag hardgecodeerd tekent — de app-shell (sidebar &amp; topbar), knoppen, kaarten, tabs, modals, tabellen, save-bar en laadstatus — hertekend op de bestaande tokens. Puur additief: geen nieuwe tokenwaarden, alleen nieuwe componentregels/-klassen.</p>
+
+    <h3>App-shell — sidebar &amp; topbar</h3>
+    <p>De app-shell van vandaag mengt losse tinten (<code>#f3f7fd</code>, <code>#fafbff</code>, teal, koraal <code>#f48184</code>, felgroen <code>#07b907</code>). Hier volledig op tokens: sidebar in aubergine met crème logo en oranje actief-markering, topbar wit op crème met één aubergine-100 scheidingslijn. Alle status- en accentkleuren komen uit de semantische laag.</p>
+    <div class="shell" style="margin-bottom: var(--space-6);">
+      <nav class="shell-side" aria-label="Hoofdnavigatie">
+        <div class="shell-brand">
+          <img src="./assets/nectar-logo-wit.svg" alt="Nectar" style="width: 108px; height: auto;">
+          <span class="shell-collapse" aria-label="Zijbalk inklappen">‹</span>
+        </div>
+        <div class="org-switcher">
+          <div class="org-avatar">S</div>
+          <div class="grow"><div class="org-name">Stichting Samen</div><div class="org-sub">wissel organisatie</div></div>
+          <span style="color: var(--nectar-aubergine-300); font-size: var(--text-xs);">▾</span>
+        </div>
+        <span class="side-label">werkruimte</span>
+        <span class="side-nav-item">Overzicht</span>
+        <span class="side-nav-item active">Impact in beeld</span>
+        <span class="side-nav-item">Sector in beeld</span>
+        <span class="side-nav-item">Metingen</span>
+        <span class="side-nav-item">Rapportages</span>
+        <div class="upgrade-card">
+          <div class="title">Upgrade naar Pro</div>
+          <div class="sub">Ontgrendel sectorvergelijking</div>
+        </div>
+        <span class="side-nav-item" style="margin-top: var(--space-2);">Instellingen</span>
+      </nav>
+      <div class="shell-main">
+        <div class="saved-banner"><span>✓</span><span class="lbl">Wijzigingen opgeslagen</span></div>
+        <header class="shell-topbar">
+          <div class="breadcrumb"><span class="muted">Impact in beeld</span><span class="sep">/</span><span class="current">Zelfvertrouwen Q3</span></div>
+          <div class="topbar-icons">
+            <div class="icon-btn" aria-label="Zoeken">⌕</div>
+            <div class="icon-btn" aria-label="Meldingen">◔<span class="icon-badge">3</span></div>
+            <div class="topbar-divider"></div>
+            <div class="user-chip"><div class="avatar"></div><span class="name">Anne ▾</span></div>
+          </div>
+        </header>
+        <div class="shell-content">
+          <h4>Impact in beeld</h4>
+          <div class="mini-kpis">
+            <div class="mini-kpi"><div class="lbl">responses</div><div class="num">128</div></div>
+            <div class="mini-kpi"><div class="lbl">responsgraad</div><div class="num">68%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dodont" style="margin-bottom: var(--space-8);">
+      <div class="do"><strong>✓ Wel</strong> Sidebar altijd aubergine; actief item = oranje randje links. Notificatie- en upgrade-accenten in oranje uit de token-laag. Topbar wit met één dunne aubergine-100 lijn.</div>
+      <div class="dont"><strong>✗ Niet</strong> Losse blauw-grijzen (<code>#f3f7fd</code>, <code>#fafbff</code>) voor shell-vlakken, koraal <code>#f48184</code> voor badges/CTA, of felgroen <code>#07b907</code> voor de opgeslagen-balk.</div>
+    </div>
 
     <h3>Knoppen — app-maat</h3>
     <p>Zelfde knoppen als §06, maar compacter voor werkschermen (<code>.btn-sm</code>: <code>space-2 / space-4</code>, <code>text-sm</code>). Eén primaire per scherm. Destructief (<code>.btn-danger</code>) is tekst in <code>--color-error</code> zónder vlak; het rode vlak (<code>.btn-danger-solid</code>) verschijnt pas bij bevestiging in een modal. Raakvlak blijft 44×44px.</p>
@@ -842,8 +949,8 @@ th { font-family: var(--font-accent); }
     <h2>Design tokens (CSS)</h2>
     <p>Kopieer dit blok als <code>tokens.css</code> in website én app, zodat beide dezelfde bron delen. In React: importeer één keer globaal en gebruik <code>var(--...)</code> in alle componenten.</p>
     <pre>:root {
-  --nectar-aubergine-700: #412944;   /* paars, primair merk */
-  --nectar-oranje-500: #ef8a53;      /* accent / CTA */
+  --nectar-aubergine-700: #452846;   /* paars/aubergine, primair merk (logo) */
+  --nectar-oranje-500: #fd8144;      /* accent / CTA (logo) */
   --nectar-oranje-600: #D9661F;      /* kleine tekst (AA) */
   --nectar-creme-100: #fcf8f0;       /* achtergrond */
   --nectar-antraciet: #282d31;       /* tekst op crème */
@@ -852,7 +959,7 @@ th { font-family: var(--font-accent); }
   /* 4 kleine kleurvlakken / categorieën */
   --nectar-groen-300: #9ac191;       /* appelgroen  · cat-1 */
   --nectar-luchtblauw-400: #88a4bc;  /* luchtblauw  · cat-2 */
-  --nectar-lila-400: #a498b8;        /* lavendel    · cat-3 */
+  --nectar-lila-400: #a397b7;        /* lavendel    · cat-3 */
   --nectar-geel-400: #e2c076;        /* zonneschijn · cat-4 */
 
   --font-display: 'Recoleta', serif;   /* H1, H2, H5 */
@@ -877,12 +984,18 @@ th { font-family: var(--font-accent); }
       <tr><td>v0.2</td><td>15 juli 2026</td><td>Website-sectie en app-sectie (voorzet) toegevoegd: app-shell, KPI-kaarten, benchmark-balken, empty state, toast</td></tr>
       <tr><td>v0.3</td><td>15 juli 2026</td><td>Definitieve merkbestanden verwerkt: fonts (Recoleta, Michroma, Oak Sans + Segoe Script) via lokale <code>@font-face</code>; definitief kleurenpalet (#412944 / #ef8a53 / #fcf8f0 / #282d31 / #435c52); 4 categorie-kleurvlakken; kleurvlak-/tekstcombinatie-regels; logo- en beeldmerk-SVG opgenomen</td></tr>
       <tr><td>v0.4</td><td>15 juli 2026</td><td>§09 app-componenten toegevoegd (uit design-handoff): app-maat + destructieve knoppen, kaarten/lijstrijen, tabs + segment-pills, modals, data-tabel, save-bar en skeletons — als herbruikbare klassen op bestaande tokens</td></tr>
+      <tr><td>v0.5</td><td>15 juli 2026</td><td>Designer-antwoorden verwerkt: kleurpalet gelijkgetrokken met logo (oranje #ef8a53→#fd8144, paars/aubergine #412944→#452846, #48344c vervallen); lavendel #a498b8→#a397b7; crème logo-/beeldmerk-varianten toegevoegd en toegepast op donkere vlakken (koptekst + app-shell); logo-gebruiksregels (gekleurd=crème-achtergrond, crème=kleurvlakken)</td></tr>
+      <tr><td>v0.6</td><td>15 juli 2026</td><td>§09 uitgebreid met de app-shell (uit design-handoff): sidebar met org-switcher, werkruimte-nav, upgrade-CTA; topbar met opgeslagen-balk, breadcrumb, notificatie-badge en gebruikersmenu — losse tinten (#f3f7fd, #fafbff, teal, koraal #f48184, #07b907) vervangen door tokens</td></tr>
     </table>
-    <h3 style="margin-top: var(--space-8);">Openstaand voor v0.5</h3>
+    <h3 style="margin-top: var(--space-8);">Opgelost in v0.5 (designer-antwoorden)</h3>
     <ul style="max-width: 65ch;">
-      <li><strong>Logo-kleuren afstemmen:</strong> <code>nectar-logo.svg</code> gebruikt #fd8144/#452846, het palet #ef8a53/#412944 — bevestigen welke leidend is en het SVG evt. hertekenen.</li>
-      <li><strong>Aubergine tekstvlak:</strong> bronspec noemt zowel #412944 als #48344c voor het grote aubergine-vlak — één waarde vaststellen.</li>
-      <li><strong>Logo op donker:</strong> crème/witte logo-variant aanleveren voor aubergine- en oranje-vlakken.</li>
+      <li><strong>Logo-kleuren zijn leidend:</strong> palet = logo-kleuren #fd8144 / #452846. Geen SVG hertekenen nodig.</li>
+      <li><strong>Aubergine tekstvlak:</strong> paars en aubergine gelijkgetrokken naar #452846; #48344c vervallen.</li>
+      <li><strong>Logo op donker:</strong> crème-varianten geleverd en toegepast (<code>nectar-logo-wit.svg</code>, <code>nectar-beeldmerk-wit.svg</code>).</li>
+    </ul>
+    <h3 style="margin-top: var(--space-8);">Openstaand voor v0.6</h3>
+    <ul style="max-width: 65ch;">
+      <li><strong>Lavendel #a397b7</strong> bevestigen als definitieve categorie-/kleurvlakwaarde (was #a498b8 — nu gelijkgetrokken met de tekst-op-paars-waarde uit de designer-mail).</li>
       <li><strong>Segoe Script</strong> een vaste rol geven of schrappen (nu alleen beschikbaar als <code>--font-script</code>).</li>
       <li>App-componenten verder uitbreiden: heatmap voor subtypen, AI-assistent (Decca) chat-patroon (basisset knoppen/kaarten/tabs/modals/tabellen/save-bar staat in §09).</li>
       <li>§09-componenten daadwerkelijk in de app-CSS migreren (vervangt <code>main.css</code>-varianten — zie §09 "wat elk component vervangt").</li>
