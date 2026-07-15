@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nectar Design Guide — v0.7</title>
+<title>Nectar Design Guide — v0.8</title>
 <link rel="stylesheet" href="./tokens.css">
 <style>
 /* ==========================================================
@@ -270,11 +270,10 @@ section { padding: var(--space-16) var(--space-6); border-bottom: 1px solid var(
 /* Data-tabel (kaart-variant) */
 .table-card { background: var(--nectar-wit); border-radius: var(--radius-md); box-shadow: var(--shadow-card); overflow: hidden; max-width: 720px; }
 .data-table { border-collapse: collapse; width: 100%; font-size: var(--text-sm); }
-.data-table thead tr { background: var(--nectar-creme-50); }
-.data-table th { text-align: left; padding: var(--space-3) var(--space-4); font-family: var(--font-accent); font-weight: 600; color: var(--color-heading); }
-.data-table td { padding: var(--space-3) var(--space-4); border-top: 1px solid var(--nectar-aubergine-100); }
-.data-table tbody tr:nth-child(even) { background: var(--nectar-creme-50); }
-.data-table tbody tr:hover { background: var(--nectar-oranje-100); }
+.data-table th { text-align: left; padding: var(--space-3) var(--space-4); font-family: var(--font-accent); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted); border-bottom: 1px solid var(--nectar-aubergine-100); }
+.data-table td { padding: var(--space-4); color: var(--color-heading); border-top: 1px solid rgba(65, 41, 68, 0.07); }
+.data-table th:first-child, .data-table td:first-child { padding-left: var(--space-6); }
+.data-table tbody tr:hover { background: var(--nectar-creme-50); }
 
 /* Save-bar + skeletons */
 .save-bar { position: sticky; bottom: 0; background: var(--nectar-creme-50); box-shadow: 0 -4px 20px rgba(46, 27, 51, 0.10); display: flex; justify-content: flex-end; gap: var(--space-2); padding: var(--space-3) var(--space-4); }
@@ -292,8 +291,11 @@ section { padding: var(--space-16) var(--space-6); border-bottom: 1px solid var(
 .org-switcher .org-name { font-family: var(--font-body); font-weight: 700; font-size: var(--text-sm); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .org-switcher .org-sub { font-size: var(--text-xs); color: var(--nectar-aubergine-300); }
 .side-label { font-family: var(--font-accent); font-weight: 600; font-size: var(--text-xs); text-transform: lowercase; letter-spacing: 0.08em; color: var(--nectar-aubergine-300); padding: var(--space-2) var(--space-3) var(--space-1); }
-.side-nav-item { font-size: var(--text-sm); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); color: var(--nectar-aubergine-100); font-family: var(--font-body); font-weight: 700; cursor: pointer; }
-.side-nav-item.active { background: var(--nectar-aubergine-500); color: var(--nectar-wit); border-left: 3px solid var(--nectar-oranje-500); }
+.side-nav-item { position: relative; font-size: var(--text-sm); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); color: var(--nectar-aubergine-300); font-family: var(--font-body); font-weight: 500; cursor: pointer; }
+.side-nav-item::before { content: ""; position: absolute; left: 4px; top: 50%; transform: translateY(-50%); width: 5px; height: 5px; border-radius: var(--radius-pill); background: transparent; }
+.side-nav-item:hover { background: rgba(255, 255, 255, 0.05); color: var(--nectar-creme-100); }
+.side-nav-item.active { background: rgba(255, 255, 255, 0.07); color: var(--nectar-wit); font-weight: 600; }
+.side-nav-item.active::before { background: var(--nectar-oranje-500); }
 .upgrade-card { margin-top: auto; background: var(--nectar-oranje-500); border-radius: var(--radius-md); padding: var(--space-3); display: flex; flex-direction: column; gap: var(--space-1); cursor: pointer; color: var(--nectar-aubergine-900); }
 .upgrade-card .title { font-family: var(--font-accent); font-weight: 700; font-size: var(--text-sm); }
 .upgrade-card .sub { font-size: var(--text-xs); }
@@ -306,8 +308,8 @@ section { padding: var(--space-16) var(--space-6); border-bottom: 1px solid var(
 .breadcrumb .sep { color: var(--nectar-aubergine-300); }
 .breadcrumb .current { color: var(--color-heading); font-weight: 500; white-space: nowrap; }
 .topbar-icons { display: flex; align-items: center; gap: var(--space-2); }
-.icon-btn { width: 36px; height: 36px; border-radius: var(--radius-pill); display: grid; place-items: center; cursor: pointer; color: var(--nectar-aubergine-700); position: relative; }
-.icon-badge { position: absolute; top: 4px; right: 4px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: var(--radius-pill); background: var(--nectar-oranje-500); color: var(--nectar-aubergine-900); font-size: 10px; font-weight: 700; display: grid; place-items: center; font-family: var(--font-accent); }
+.icon-btn { width: 40px; height: 40px; border-radius: var(--radius-pill); display: grid; place-items: center; cursor: pointer; color: var(--nectar-aubergine-700); position: relative; background: var(--nectar-wit); border: 1px solid var(--nectar-aubergine-100); }
+.icon-badge { position: absolute; top: 6px; right: 6px; width: 8px; height: 8px; border-radius: var(--radius-pill); background: var(--color-error); border: 2px solid var(--nectar-wit); }
 .topbar-divider { width: 1px; height: 24px; background: var(--nectar-aubergine-100); margin: 0 var(--space-1); }
 .user-chip { display: flex; align-items: center; gap: var(--space-2); cursor: pointer; }
 .user-chip .avatar { width: 32px; height: 32px; border-radius: var(--radius-pill); background: var(--nectar-aubergine-100); flex: none; }
@@ -370,6 +372,14 @@ section { padding: var(--space-16) var(--space-6); border-bottom: 1px solid var(
 .step-card .action { display: flex; align-items: center; gap: var(--space-2); color: var(--color-accent-text); font-family: var(--font-accent); font-weight: 600; font-size: var(--text-sm); }
 @media (max-width: 640px) { .section-hero-top { grid-template-columns: 1fr; } }
 
+/* Specificatie-blok (per component) */
+.spec { margin-top: var(--space-6); background: var(--nectar-creme-50); border: 1px solid var(--nectar-aubergine-100); border-radius: var(--radius-md); padding: var(--space-6); }
+.spec-title { font-family: var(--font-accent); font-weight: 700; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4); }
+.spec dl { margin: 0; display: grid; grid-template-columns: 190px 1fr; gap: var(--space-3) var(--space-6); font-size: var(--text-sm); }
+.spec dt { font-family: var(--font-accent); font-weight: 600; color: var(--color-heading); }
+.spec dd { margin: 0; }
+@media (max-width: 640px) { .spec dl { grid-template-columns: 1fr; gap: var(--space-1) 0; } .spec dt { margin-top: var(--space-3); } }
+
 table { border-collapse: collapse; width: 100%; max-width: 60rem; font-size: var(--text-sm); }
 th, td { text-align: left; padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--nectar-aubergine-100); }
 th { font-family: var(--font-accent); }
@@ -382,7 +392,7 @@ th { font-family: var(--font-accent); }
     <img src="./assets/nectar-logo-wit.svg" alt="Nectar — laat je impact zien" style="display: block; width: 220px; height: auto;">
     <h1 style="margin-top: var(--space-8); color: var(--nectar-creme-100);">Design guide</h1>
     <p style="color: var(--nectar-aubergine-100);">Eén bron van waarheid voor de Nectar-huisstijl in website, app en rapporten. Kleuren en fonts zijn nu de <strong style="color: var(--nectar-creme-100);">definitieve merkwaarden</strong> zoals aangeleverd door de designer (juli 2026).</p>
-    <span class="version-pill">v0.7 — Nectar AI-paneel + sectie-landingspagina's in §09 · v0.6 app-shell</span>
+    <span class="version-pill">v0.8 — specificatieblokken per §09-component (exacte tokens/waarden) · v0.7 AI + landingspagina's</span>
   </div>
 </header>
 
@@ -791,7 +801,7 @@ th { font-family: var(--font-accent); }
           <div class="breadcrumb"><span class="muted">Impact in beeld</span><span class="sep">/</span><span class="current">Zelfvertrouwen Q3</span></div>
           <div class="topbar-icons">
             <div class="icon-btn" aria-label="Zoeken">⌕</div>
-            <div class="icon-btn" aria-label="Meldingen">◔<span class="icon-badge">3</span></div>
+            <div class="icon-btn" aria-label="Meldingen (nieuw)">◔<span class="icon-badge"></span></div>
             <div class="topbar-divider"></div>
             <div class="user-chip"><div class="avatar"></div><span class="name">Anne ▾</span></div>
           </div>
@@ -808,6 +818,20 @@ th { font-family: var(--font-accent); }
     <div class="dodont" style="margin-bottom: var(--space-8);">
       <div class="do"><strong>✓ Wel</strong> Sidebar altijd aubergine; actief item = oranje randje links. Notificatie- en upgrade-accenten in oranje uit de token-laag. Topbar wit met één dunne aubergine-100 lijn.</div>
       <div class="dont"><strong>✗ Niet</strong> Losse blauw-grijzen (<code>#f3f7fd</code>, <code>#fafbff</code>) voor shell-vlakken, koraal <code>#f48184</code> voor badges/CTA, of felgroen <code>#07b907</code> voor de opgeslagen-balk.</div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-title">Specificatie · sidebar &amp; topbar</div>
+      <dl>
+        <dt>Sidebar-vlak</dt><dd>Achtergrond <code>--nectar-aubergine-700</code>; breedte 240px (ingeklapt 56px), tekst <code>--nectar-creme-100</code>.</dd>
+        <dt>Nav-item · rust</dt><dd>Oak Sans 14px / 500, kleur <code>--nectar-aubergine-300</code>, padding <code>space-2 space-3</code>, <code>--radius-sm</code>, transparante 5px stip links.</dd>
+        <dt>Nav-item · hover</dt><dd>Achtergrond <code>rgba(255,255,255,0.05)</code>, tekst wordt <code>--nectar-creme-100</code>.</dd>
+        <dt>Nav-item · actief</dt><dd>Achtergrond <code>rgba(255,255,255,0.07)</code>, tekst <code>--nectar-wit</code> / 600, 5px oranje stip (<code>--nectar-oranje-500</code>) links. Géén vol vlak of harde randlijn.</dd>
+        <dt>Topbar</dt><dd>Wit vlak, hoogte ~64px, 1px <code>--nectar-aubergine-100</code> onderrand; breadcrumb muted → actief <code>--color-heading</code>.</dd>
+        <dt>Topbar-icoon</dt><dd>40px cirkel, wit, 1px <code>--nectar-aubergine-100</code> rand, icoon <code>--nectar-aubergine-700</code>; notificatie = 8px <code>--color-error</code> stip met witte rand.</dd>
+        <dt>Opgeslagen-balk</dt><dd>Vlak <code>--color-success</code>, tekst crème 12px (was <code>#07b907</code>).</dd>
+        <dt>Upgrade-CTA</dt><dd>Vlak <code>--nectar-oranje-500</code>, tekst <code>--nectar-aubergine-900</code>, <code>--radius-md</code> (was koraal <code>#f48184</code>).</dd>
+      </dl>
     </div>
 
     <h3>Nectar AI-paneel</h3>
@@ -906,6 +930,20 @@ th { font-family: var(--font-accent); }
       Vervangt in <code>decca.css</code>/<code>chatscreen.css</code>: <code>#f3f7fd</code>-panelen → crème, user-bubbel <code>#fae5e5</code> → oranje-100, assistent-bubbel <code>#b1c1c4</code> → witte kaart met <code>--shadow-card</code>, teal avatar → aubergine met "N", verzendknop → oranje.
     </div>
 
+    <div class="spec">
+      <div class="spec-title">Specificatie · Nectar AI</div>
+      <dl>
+        <dt>Naam</dt><dd>"Nectar AI" (vervangt "Decca"), subtitel "Impact-adviseur" in <code>--color-text-muted</code>.</dd>
+        <dt>Avatar</dt><dd>40px cirkel <code>--nectar-aubergine-700</code>, letter "N" in Recoleta / crème; online-stip <code>--color-success</code> (was teal-gradient).</dd>
+        <dt>Paneel-canvas</dt><dd>Gesprek-achtergrond <code>--nectar-creme-50</code>; header en invoerbalk wit met 1px <code>--nectar-aubergine-100</code> (was <code>#f3f7fd</code>).</dd>
+        <dt>Assistent-bubbel</dt><dd>Witte kaart, <code>--shadow-card</code>, radius 4/16/16/16 (was grijs <code>#b1c1c4</code>).</dd>
+        <dt>User-bubbel</dt><dd>Vlak <code>--nectar-oranje-100</code>, tekst <code>--nectar-bruin</code>, radius 16/4/16/16 (was roze <code>#fae5e5</code>).</dd>
+        <dt>Verzendknop</dt><dd>34px cirkel <code>--nectar-oranje-500</code>, pijl-icoon <code>--nectar-aubergine-900</code>.</dd>
+        <dt>Gesprek-rij · hover</dt><dd>Achtergrond <code>--nectar-creme-50</code>; icoontegel 34px <code>--radius-sm</code> op <code>--nectar-aubergine-100</code>.</dd>
+        <dt>Empty-state</dt><dd>Grote 64px aubergine avatar, muted uitleg, primaire knop "Nieuw gesprek" in oranje.</dd>
+      </dl>
+    </div>
+
     <h3 style="margin-top: var(--space-8);">Sectie-landingspagina's</h3>
     <p>De drie level-1 ouderpagina's — <strong>Meten</strong>, <strong>Ondersteuning</strong> en <strong>Communiceren</strong> — delen één template: paginakop in display-serif met hexagon-icoon, intro-tekst en genummerde kaartrijen met een chevron-actie. Vervangt de grijze <code>#f4f4f4</code>-lijnen met tekst-only "Bekijk".</p>
 
@@ -968,6 +1006,20 @@ th { font-family: var(--font-accent); }
       Vervangt in <code>sectionexplainer.css</code>: de <code>#f4f4f4</code>-lijnen op <code>segment-overview-step</code> → crème-50 kaartrijen met genummerde badge en chevron; <code>.page-header</code>-icoon (grijze MUI-svg) → aubergine icoontegel. De icoontegels tonen de plek van de bestaande MUI-iconen — de app blijft die gebruiken, alleen de kleur wordt <code>--nectar-aubergine-700</code>.
     </div>
 
+    <div class="spec">
+      <div class="spec-title">Specificatie · sectie-landingspagina</div>
+      <dl>
+        <dt>Toepassing</dt><dd>De drie level-1 ouderpagina's Meten, Ondersteuning en Communiceren delen exact deze opbouw.</dd>
+        <dt>Hero-vlak</dt><dd>Achtergrond <code>--nectar-aubergine-700</code>, <code>--radius-lg</code>, <code>--shadow-raised</code>; kop-grid 1.4fr / 1fr.</dd>
+        <dt>Eyebrow</dt><dd>font-accent 600, lowercase, letter-spacing .14em, <code>--nectar-oranje-500</code>, <code>--text-sm</code>.</dd>
+        <dt>Titel</dt><dd>Recoleta 700, <code>--text-4xl</code>, <code>--nectar-creme-100</code>.</dd>
+        <dt>Intro / beschrijving</dt><dd><code>--text-lg</code> / <code>--leading-normal</code>, <code>--nectar-aubergine-100</code>, max 46ch — bewust ruim.</dd>
+        <dt>Hexagon-icoon</dt><dd>Zeshoek (clip-path) 160×184, gradient <code>--nectar-oranje-500 → 600</code>, MUI-icoon in <code>--nectar-aubergine-900</code>.</dd>
+        <dt>Stap-kaart</dt><dd>Wit, <code>--radius-md</code>, <code>--shadow-card</code>; nummer Recoleta <code>--text-3xl</code> in <code>--nectar-oranje-500</code>; titel Michroma; hover <code>translateY(-3px)</code>.</dd>
+        <dt>Actie</dt><dd>"Bekijk" in font-accent 600 <code>--color-accent-text</code> + chevron (vervangt tekst-only "Bekijk/aanpassen").</dd>
+      </dl>
+    </div>
+
     <h3 style="margin-top: var(--space-8);">Knoppen — app-maat</h3>
     <p>Zelfde knoppen als §06, maar compacter voor werkschermen (<code>.btn-sm</code>: <code>space-2 / space-4</code>, <code>text-sm</code>). Eén primaire per scherm. Destructief (<code>.btn-danger</code>) is tekst in <code>--color-error</code> zónder vlak; het rode vlak (<code>.btn-danger-solid</code>) verschijnt pas bij bevestiging in een modal. Raakvlak blijft 44×44px.</p>
     <div class="demo-block">
@@ -978,6 +1030,18 @@ th { font-family: var(--font-accent); }
         <button class="btn btn-danger btn-sm">Verwijderen</button>
         <button class="btn btn-primary btn-sm" disabled>Bezig…</button>
       </div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-title">Specificatie · knoppen</div>
+      <dl>
+        <dt>Maat (app)</dt><dd>Padding <code>space-2 space-4</code>, <code>--text-sm</code>, <code>--radius-pill</code>; minimaal raakvlak 44×44px.</dd>
+        <dt>Primair</dt><dd>Vlak <code>--nectar-oranje-500</code>, tekst <code>--nectar-aubergine-900</code>; hover <code>--nectar-oranje-600</code> + tekst wit. Eén per scherm.</dd>
+        <dt>Secundair</dt><dd>Transparant, 2px rand <code>--nectar-aubergine-700</code>, tekst idem.</dd>
+        <dt>Ghost</dt><dd>Geen rand, <code>--color-accent-text</code>, onderstreept.</dd>
+        <dt>Destructief</dt><dd>Tekst <code>--color-error</code>, géén vlak; alleen in de bevestigingsmodal wordt het een <code>--color-error</code> vlak met witte tekst.</dd>
+        <dt>Disabled / bezig</dt><dd>Opacity 0.45, geen hover-transform.</dd>
+      </dl>
     </div>
 
     <h3>Kaarten &amp; lijstrijen</h3>
@@ -1019,6 +1083,18 @@ th { font-family: var(--font-accent); }
       </div>
     </div>
 
+    <div class="spec">
+      <div class="spec-title">Specificatie · kaarten</div>
+      <dl>
+        <dt>Basis</dt><dd>Wit, <code>--radius-md</code>, <code>--shadow-card</code>, géén rand. Nooit de 3-delige Material-schaduw.</dd>
+        <dt>Padding</dt><dd><code>space-4</code> (compact) of <code>space-6</code> (ruim).</dd>
+        <dt>KPI</dt><dd>Getal Recoleta 700 <code>--text-2xl</code>; label font-accent <code>--text-xs</code> <code>--color-text-muted</code>; delta <code>--color-success</code>.</dd>
+        <dt>Categorie-markering</dt><dd>8px stip in <code>--cat-1..4</code> — nooit als gekleurde rand of vol vlak.</dd>
+        <dt>Statusbadge</dt><dd>font-accent 600 <code>--text-xs</code>, <code>--radius-pill</code>. Succes #DDEEE2/<code>--color-success</code>, respons laag #F7E7CC/<code>--color-warning</code>, concept aubergine-100/aubergine-700.</dd>
+        <dt>Lijstrij</dt><dd>Wit, <code>--radius-md</code>, <code>--shadow-card</code>, 40px avatar-cirkel, <code>gap:space-3</code>.</dd>
+      </dl>
+    </div>
+
     <h3 style="margin-top: var(--space-8);">Tabs</h3>
     <p>Vervangt de <code>.secondary-tab-*</code>-set (teal). Actief = aubergine tekst met oranje onderlijn, geen gekleurde vlakken. Voor filters een segment-variant (pill): actief = aubergine vlak met crème tekst.</p>
     <div class="demo-block">
@@ -1034,6 +1110,16 @@ th { font-family: var(--font-accent); }
         <span class="seg">Actief</span>
         <span class="seg">Concept</span>
       </div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-title">Specificatie · tabs</div>
+      <dl>
+        <dt>Onderlijn-tab · actief</dt><dd>Tekst <code>--nectar-aubergine-700</code> / 700, 3px onderlijn <code>--nectar-oranje-500</code>.</dd>
+        <dt>Onderlijn-tab · rust</dt><dd>Tekst <code>--color-text-muted</code> / 500, geen lijn; rij-scheiding 1px <code>--nectar-aubergine-100</code>.</dd>
+        <dt>Pill/filter · actief</dt><dd>Vlak <code>--nectar-aubergine-700</code>, tekst <code>--nectar-creme-100</code>.</dd>
+        <dt>Pill/filter · rust</dt><dd>Transparant, 1px rand <code>--nectar-aubergine-300</code>, tekst <code>--color-text-muted</code>. Vervangt de teal <code>.secondary-tab-*</code>.</dd>
+      </dl>
     </div>
 
     <h3>Modals &amp; dialogen</h3>
@@ -1071,6 +1157,17 @@ th { font-family: var(--font-accent); }
       </div>
     </div>
 
+    <div class="spec">
+      <div class="spec-title">Specificatie · modals</div>
+      <dl>
+        <dt>Overlay</dt><dd><code>--nectar-aubergine-900</code> op 45% (<code>rgba(46,27,51,0.45)</code>).</dd>
+        <dt>Paneel</dt><dd>Wit, <code>--radius-lg</code>, <code>--shadow-raised</code>, max ~360px breed.</dd>
+        <dt>Titel</dt><dd>Recoleta 700 <code>--text-xl</code>; sluitknop "×" <code>--color-text-muted</code> rechtsboven.</dd>
+        <dt>Footer</dt><dd>Balk in <code>--nectar-creme-50</code>, acties rechts uitgelijnd (secundair + primair).</dd>
+        <dt>Destructieve variant</dt><dd>Bevestigingsknop = vlak <code>--color-error</code> met witte tekst — de enige plek met een rood knopvlak.</dd>
+      </dl>
+    </div>
+
     <h3 style="margin-top: var(--space-8);">Tabellen</h3>
     <p>Kop in Oak Sans (accent) op crème-50, rijen gescheiden door <code>--nectar-aubergine-100</code>, zebra in crème-50 en hover licht oranje. Op mobiel worden rijen kaartlijsten (§08-regel).</p>
     <div class="table-card">
@@ -1084,6 +1181,18 @@ th { font-family: var(--font-accent); }
           <tr><td>Arbeidsparticipatie</td><td>—</td><td><span class="badge info">Concept</span></td></tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="spec">
+      <div class="spec-title">Specificatie · tabellen</div>
+      <dl>
+        <dt>Container</dt><dd>Wit, <code>--radius-md</code>, <code>--shadow-card</code> — géén donkere kopbalk.</dd>
+        <dt>Koprij</dt><dd>Geen vlak; labels font-accent 600 <code>--text-xs</code> uppercase, letter-spacing .06em, <code>--color-text-muted</code>; 1px <code>--nectar-aubergine-100</code> onderlijn.</dd>
+        <dt>Cel</dt><dd>Padding <code>space-4</code>, eerste kolom <code>space-6</code> inspring; tekst <code>--color-heading</code>.</dd>
+        <dt>Rij-scheiding</dt><dd>1px <code>rgba(65,41,68,0.07)</code> — geen zebra-striping.</dd>
+        <dt>Rij · hover</dt><dd>Achtergrond <code>--nectar-creme-50</code>.</dd>
+        <dt>Mobiel</dt><dd>Rijen worden kaartlijst-items.</dd>
+      </dl>
     </div>
 
     <h3 style="margin-top: var(--space-8);">Save-bar &amp; skeletons</h3>
@@ -1102,6 +1211,15 @@ th { font-family: var(--font-accent); }
         <div class="skeleton-line" style="height: 12px; width: 40%;"></div>
       </div>
       <p style="font-size: var(--text-sm); color: var(--color-text-muted); max-width: 32ch; align-self: center; margin: 0;">Skeleton in crème-50 met dunne aubergine-100 rand — dezelfde vorm als de KPI-kaart die laadt. Geen spinner op paginaniveau.</p>
+    </div>
+
+    <div class="spec">
+      <div class="spec-title">Specificatie · save-bar &amp; laadstatus</div>
+      <dl>
+        <dt>Save-bar</dt><dd>Sticky onderaan, vlak <code>--nectar-creme-50</code>, schaduw naar boven <code>0 -4px 20px rgba(46,27,51,0.10)</code>; primaire actie oranje, secundair outline (was groene balk + groene knop).</dd>
+        <dt>Skeleton</dt><dd>Blokken in <code>--nectar-creme-50</code> met 1px <code>--nectar-aubergine-100</code> rand, in de vorm van de laadende kaart.</dd>
+        <dt>Regel</dt><dd>Geen spinner op paginaniveau; skeletons dragen de laadstatus.</dd>
+      </dl>
     </div>
 
     <h3 style="margin-top: var(--space-8);">Wat elk component vervangt</h3>
@@ -1195,6 +1313,7 @@ th { font-family: var(--font-accent); }
       <tr><td>v0.5</td><td>15 juli 2026</td><td>Designer-antwoorden verwerkt: kleurpalet gelijkgetrokken met logo (oranje #ef8a53→#fd8144, paars/aubergine #412944→#452846, #48344c vervallen); lavendel #a498b8→#a397b7; crème logo-/beeldmerk-varianten toegevoegd en toegepast op donkere vlakken (koptekst + app-shell); logo-gebruiksregels (gekleurd=crème-achtergrond, crème=kleurvlakken)</td></tr>
       <tr><td>v0.6</td><td>15 juli 2026</td><td>§09 uitgebreid met de app-shell (uit design-handoff): sidebar met org-switcher, werkruimte-nav, upgrade-CTA; topbar met opgeslagen-balk, breadcrumb, notificatie-badge en gebruikersmenu — losse tinten (#f3f7fd, #fafbff, teal, koraal #f48184, #07b907) vervangen door tokens</td></tr>
       <tr><td>v0.7</td><td>15 juli 2026</td><td>§09 uitgebreid (uit design-handoff): Nectar AI-paneel (3 states: gesprek, leeg, geschiedenis) — vervangt de off-brand "Decca"-chat (#f3f7fd/#fae5e5/#b1c1c4/teal); en sectie-landingspagina's (Meten, Ondersteuning, Communiceren) met aubergine hero + hexagon-icoon en genummerde kaartrijen — vervangt de grijze #f4f4f4 explainer-lijnen</td></tr>
+      <tr><td>v0.8</td><td>15 juli 2026</td><td>Specificatieblokken toegevoegd onder elk §09-component (sidebar &amp; topbar, Nectar AI, sectie-landingspagina, knoppen, kaarten, tabs, modals, tabellen, save-bar): exacte tokens, maten en states per onderdeel als <code>&lt;dl&gt;</code>-spec</td></tr>
     </table>
     <h3 style="margin-top: var(--space-8);">Opgelost (designer-antwoorden)</h3>
     <ul style="max-width: 65ch;">
