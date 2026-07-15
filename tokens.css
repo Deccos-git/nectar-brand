@@ -4,38 +4,49 @@
    Namen liggen vast (gedeeld vocabulaire met de designer);
    wijzig namen niet, alleen waarden.
 
-   Let op: hexwaarden zijn nog benaderingen uit de brand-PDF.
-   De designer levert later de definitieve waarden (v0.3).
+   v0.3 — kleuren en fonts zijn nu de definitieve waarden
+   zoals aangeleverd door de designer (juli 2026), niet langer
+   benaderingen uit de PDF.
    ========================================================== */
 :root {
-  /* --- Kleur: kern --- */
-  --nectar-aubergine-900: #2E1B33;
-  --nectar-aubergine-700: #3E2745;   /* primaire merkkleur */
-  --nectar-aubergine-500: #5C4066;
-  --nectar-aubergine-300: #9E8BB8;   /* lila accent (stappen) */
-  --nectar-aubergine-100: #E6DFEE;
+  /* --- Kleur: kern (definitief) --- */
+  --nectar-aubergine-900: #2E1B33;   /* afgeleide donkere tint */
+  --nectar-aubergine-700: #412944;   /* primaire merkkleur (paars) */
+  --nectar-aubergine-500: #5C4066;   /* afgeleide tint — info/hover */
+  --nectar-aubergine-300: #9E8BB8;   /* afgeleide lila tint — borders/markers */
+  --nectar-aubergine-100: #E6DFEE;   /* afgeleide zachte tint */
 
-  --nectar-oranje-600: #D9661F;      /* oranje voor kleine tekst (AA) */
-  --nectar-oranje-500: #F5823D;      /* primair accent */
-  --nectar-oranje-100: #FDE4D2;
+  --nectar-oranje-600: #D9661F;      /* donkerder oranje voor kleine tekst (AA) — afgeleid */
+  --nectar-oranje-500: #ef8a53;      /* primair accent / CTA */
+  --nectar-oranje-100: #FDE4D2;      /* afgeleide zachte tint */
 
-  --nectar-creme-100: #FAF3E8;       /* standaard achtergrond */
+  --nectar-creme-100: #fcf8f0;       /* standaard achtergrond */
   --nectar-creme-50:  #FDFAF4;
   --nectar-wit: #FFFFFF;
+  --nectar-antraciet: #282d31;       /* tekst op crème */
 
-  /* --- Kleur: categorie (data-viz, stappen, sectievlakken) ---
-     Nieuw t.o.v. v0.2. Waarden gesampeld uit de brand-deck,
-     nog te verifiëren door de designer (v0.3). */
-  --nectar-groen-600: #3B5D52;       /* bosgroen, sectievlak */
-  --nectar-groen-300: #89A589;       /* salie, categorie 1 */
-  --nectar-lila-400:  #A498B8;       /* categorie 2 */
-  --nectar-koraal-400: #E58A76;      /* categorie 3 */
-  --nectar-geel-400:  #F1B14E;       /* mosterd, categorie 4 */
+  /* --- Kleur: grote sectievlakken --- */
+  --nectar-groen-600: #435c52;       /* bosgroen — groot sectievlak */
+  /* (het tweede grote vlak is paars: --nectar-aubergine-700 #412944) */
+
+  /* --- Kleur: 4 kleine kleurvlakken / categorieën (definitief) --- */
+  --nectar-groen-300:      #9ac191;  /* appelgroen — categorie 1 */
+  --nectar-luchtblauw-400: #88a4bc;  /* luchtblauw — categorie 2 */
+  --nectar-lila-400:       #a498b8;  /* lavendel   — categorie 3 */
+  --nectar-geel-400:       #e2c076;  /* zonneschijn — categorie 4 */
+
+  /* --- Kleur: tekst/icoon-kleuren óp de kleurvlakken ---
+     Additief. Zie styleguide § Kleurvlakken voor de toegestane combinaties. */
+  --nectar-aubergine-vlak: #48344c;  /* bronspec voor het grote aubergine-tekstvlak — te bevestigen */
+  --nectar-groen-donker:   #30423a;  /* tekst/icoon op appelgroen */
+  --nectar-blauw-donker:   #2a353d;  /* tekst/icoon op luchtblauw */
+  --nectar-bruin:          #3f3121;  /* tekst/icoon op zonneschijn */
 
   /* --- Kleur: semantisch --- */
   --color-bg: var(--nectar-creme-100);
   --color-bg-inverse: var(--nectar-aubergine-700);
-  --color-text: var(--nectar-aubergine-900);
+  --color-text: var(--nectar-antraciet);       /* lopende tekst op crème */
+  --color-heading: var(--nectar-aubergine-700); /* display-koppen */
   --color-text-inverse: var(--nectar-creme-100);
   --color-text-muted: #6B5A72;
   --color-accent: var(--nectar-oranje-500);
@@ -47,15 +58,17 @@
   --color-focus: #2E5FA3;
 
   /* --- Kleur: categorie-laag (grafieken binden hieraan) --- */
-  --cat-1: var(--nectar-groen-300);
-  --cat-2: var(--nectar-lila-400);
-  --cat-3: var(--nectar-koraal-400);
-  --cat-4: var(--nectar-geel-400);
+  --cat-1: var(--nectar-groen-300);       /* appelgroen */
+  --cat-2: var(--nectar-luchtblauw-400);  /* luchtblauw */
+  --cat-3: var(--nectar-lila-400);        /* lavendel */
+  --cat-4: var(--nectar-geel-400);        /* zonneschijn */
 
-  /* --- Typografie --- */
-  --font-display: 'Fraunces', Georgia, serif;      /* koppen */
-  --font-body: 'Poppins', system-ui, sans-serif;   /* lopende tekst */
-  --font-accent: 'Quicksand', system-ui, sans-serif; /* stap-labels, eyebrows */
+  /* --- Typografie (definitieve merk-fonts, @font-face in styleguide.html) --- */
+  --font-display: 'Recoleta', Georgia, serif;      /* H1, H2, H5 */
+  --font-tech:    'Michroma', system-ui, sans-serif; /* H3, H4, quotes */
+  --font-body:    'Oak Sans', system-ui, sans-serif; /* lopende tekst, menu, H6 */
+  --font-accent:  'Oak Sans', system-ui, sans-serif; /* labels, eyebrows, badges (OakSans Medium/Bold) */
+  --font-script:  'Segoe Script', cursive;           /* decoratief — nog geen vaste rol */
 
   --text-xs: 0.75rem;    /* 12 — bijschriften */
   --text-sm: 0.875rem;   /* 14 — secundair */

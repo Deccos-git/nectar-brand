@@ -3,15 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nectar Design Guide — v0.1</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+<title>Nectar Design Guide — v0.3</title>
 <link rel="stylesheet" href="./tokens.css">
 <style>
 /* ==========================================================
    NECTAR DESIGN TOKENS komen uit tokens.css (single source).
    Bewerk waarden daar, niet hier.
    ========================================================== */
+
+/* ===================== Merk-fonts (@font-face) =====================
+   Definitieve merk-fonts, lokaal geleverd (map ./fonts/).
+   Rollen: Recoleta = display (H1/H2/H5) · Michroma = tech (H3/H4/quotes)
+   · Oak Sans = body/menu/H6 · Segoe Script = decoratief (nog geen rol). */
+@font-face {
+  font-family: 'Recoleta'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('./fonts/Recoleta-Bold.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Michroma'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('./fonts/Michroma-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Oak Sans'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('./fonts/OakSans-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Oak Sans'; font-style: normal; font-weight: 500; font-display: swap;
+  src: url('./fonts/OakSans-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Oak Sans'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('./fonts/OakSans-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Segoe Script'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('./fonts/SegoeScript-Bold.ttf') format('truetype');
+}
 
 /* ===================== Basis ===================== */
 * { box-sizing: border-box; }
@@ -23,10 +50,12 @@ body {
   font-size: var(--text-base);
   line-height: var(--leading-normal);
 }
-h1, h2, h3 { font-family: var(--font-display); line-height: var(--leading-tight); margin: 0 0 var(--space-4); }
-h1 { font-size: var(--text-3xl); font-weight: 900; }
-h2 { font-size: var(--text-2xl); font-weight: 700; }
-h3 { font-size: var(--text-xl); font-weight: 700; }
+h1, h2, h3 { line-height: var(--leading-tight); margin: 0 0 var(--space-4); color: var(--color-heading); }
+/* H1/H2 in Recoleta (display); Recoleta wordt alleen als Bold geleverd (700). */
+h1 { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: 700; }
+h2 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; }
+/* H3 in Michroma (tech) — brede geometrische sans, iets kleiner spatiëren. */
+h3 { font-family: var(--font-tech); font-size: var(--text-lg); font-weight: 400; letter-spacing: -0.01em; }
 p { margin: 0 0 var(--space-4); max-width: 65ch; }
 code, pre { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.85em; }
 pre { background: var(--nectar-aubergine-900); color: var(--nectar-creme-100); padding: var(--space-4); border-radius: var(--radius-md); overflow-x: auto; }
@@ -41,7 +70,7 @@ a { color: var(--color-accent-text); }
   padding: var(--space-16) var(--space-6) var(--space-12);
 }
 .guide-header .inner, section .inner { max-width: var(--container); margin: 0 auto; }
-.logo-word { font-family: var(--font-display); font-weight: 900; font-size: var(--text-2xl); letter-spacing: -0.02em; }
+.logo-word { font-family: var(--font-display); font-weight: 700; font-size: var(--text-2xl); letter-spacing: -0.02em; }
 .logo-word .hex { color: var(--nectar-oranje-500); }
 .tagline { font-family: var(--font-accent); color: var(--nectar-oranje-500); letter-spacing: 0.06em; }
 .version-pill {
@@ -65,6 +94,12 @@ section { padding: var(--space-16) var(--space-6); border-bottom: 1px solid var(
 .swatch .chip { height: 84px; }
 .swatch .meta { padding: var(--space-3); font-size: var(--text-xs); }
 .swatch .meta strong { display: block; font-size: var(--text-sm); }
+
+/* Kleurvlak + tekstcombinaties */
+.pairing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--space-4); }
+.pairing { border-radius: var(--radius-md); padding: var(--space-4); box-shadow: var(--shadow-card); display: flex; flex-wrap: wrap; gap: var(--space-2); align-content: flex-start; min-height: 128px; }
+.pairing-name { flex-basis: 100%; font-family: var(--font-accent); font-weight: 700; font-size: var(--text-sm); margin-bottom: var(--space-2); }
+.pill { font-family: var(--font-accent); font-weight: 500; font-size: var(--text-xs); padding: var(--space-1) var(--space-3); border-radius: var(--radius-pill); }
 
 /* ===================== Typografie-samples ===================== */
 .type-sample { display: grid; grid-template-columns: 140px 1fr; gap: var(--space-4); align-items: baseline; padding: var(--space-3) 0; border-bottom: 1px dashed var(--nectar-aubergine-100); }
@@ -104,7 +139,7 @@ section { padding: var(--space-16) var(--space-6); border-bottom: 1px solid var(
   background: var(--nectar-aubergine-300);
   clip-path: polygon(0 0, 70% 0, 100% 50%, 70% 100%, 0 100%);
   display: grid; place-items: center;
-  color: var(--nectar-aubergine-900); font-family: var(--font-display); font-weight: 900; font-size: var(--text-xl);
+  color: var(--nectar-aubergine-900); font-family: var(--font-display); font-weight: 700; font-size: var(--text-xl);
 }
 .step h4 { font-family: var(--font-accent); font-weight: 600; color: var(--color-accent-text); font-size: var(--text-lg); margin: 0 0 var(--space-1); }
 .step p { font-size: var(--text-sm); margin: 0; }
@@ -114,7 +149,7 @@ section { padding: var(--space-16) var(--space-6); border-bottom: 1px solid var(
   background: var(--nectar-oranje-500); color: var(--nectar-creme-50);
   border-radius: var(--radius-lg); padding: var(--space-8);
 }
-.quote blockquote { font-style: italic; font-size: var(--text-lg); margin: 0 0 var(--space-4); max-width: 40ch; }
+.quote blockquote { font-family: var(--font-tech); font-size: var(--text-base); line-height: 1.5; margin: 0 0 var(--space-4); max-width: 40ch; }
 .quote cite { font-family: var(--font-accent); font-style: normal; }
 
 /* Formulier */
@@ -145,6 +180,11 @@ section { padding: var(--space-16) var(--space-6); border-bottom: 1px solid var(
 .dodont strong { font-family: var(--font-accent); display: block; margin-bottom: var(--space-2); }
 @media (max-width: 640px) { .dodont { grid-template-columns: 1fr; } }
 
+/* Logo-showcase */
+.logo-showcase { display: flex; flex-wrap: wrap; gap: var(--space-4); margin: var(--space-4) 0; }
+.logo-card { background: var(--nectar-creme-50); border: 1px solid var(--nectar-aubergine-100); border-radius: var(--radius-md); padding: var(--space-6); display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
+.logo-cap { font-family: var(--font-accent); font-size: var(--text-xs); color: var(--color-text-muted); }
+
 /* Hexagon-motief */
 .hexes { display: flex; gap: var(--space-2); margin: var(--space-4) 0; }
 .hex-shape { width: 44px; height: 50px; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }
@@ -168,7 +208,7 @@ section { padding: var(--space-16) var(--space-6); border-bottom: 1px solid var(
 .app-topbar h4 { font-family: var(--font-display); font-size: var(--text-xl); margin: 0; }
 .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-6); }
 .kpi { background: var(--nectar-wit); border-radius: var(--radius-md); padding: var(--space-4); box-shadow: var(--shadow-card); }
-.kpi .num { font-family: var(--font-display); font-weight: 900; font-size: var(--text-2xl); }
+.kpi .num { font-family: var(--font-display); font-weight: 700; font-size: var(--text-2xl); }
 .kpi .lbl { font-family: var(--font-accent); font-size: var(--text-xs); color: var(--color-text-muted); }
 .kpi .delta { font-size: var(--text-xs); color: var(--color-success); font-weight: 600; }
 .bench { background: var(--nectar-wit); border-radius: var(--radius-md); padding: var(--space-4); box-shadow: var(--shadow-card); margin-bottom: var(--space-6); }
@@ -197,8 +237,8 @@ th { font-family: var(--font-accent); }
     <div class="logo-word">nectar <span class="hex">⬡</span></div>
     <div class="tagline">laat je impact zien</div>
     <h1 style="margin-top: var(--space-8); color: var(--nectar-creme-100);">Design guide</h1>
-    <p style="color: var(--nectar-aubergine-100);">Eén bron van waarheid voor de Nectar-huisstijl in website, app en rapporten. Gebaseerd op het brandbook (PDF, juli 2026).</p>
-    <span class="version-pill">v0.2 — met website- en app-sectie · kleuren en fonts nog te verifiëren tegen bronbestanden</span>
+    <p style="color: var(--nectar-aubergine-100);">Eén bron van waarheid voor de Nectar-huisstijl in website, app en rapporten. Kleuren en fonts zijn nu de <strong style="color: var(--nectar-creme-100);">definitieve merkwaarden</strong> zoals aangeleverd door de designer (juli 2026).</p>
+    <span class="version-pill">v0.3 — definitieve fonts (Recoleta · Michroma · Oak Sans), definitief kleurenpalet en kleurvlak-regels</span>
   </div>
 </header>
 
@@ -222,18 +262,72 @@ th { font-family: var(--font-accent); }
   <div class="inner">
     <span class="eyebrow">02 · kleur</span>
     <h2>Kleurenpalet</h2>
-    <p>Aubergine is de basiskleur (achtergronden, koppen), crème de canvas-kleur, oranje het accent voor actie en nadruk, lila het zachte accent voor structuurelementen zoals stap-markers.</p>
+    <p>Paars (aubergine) is de basiskleur voor achtergronden en koppen, crème de canvas-kleur, oranje het accent voor actie en nadruk. Daarnaast zijn er twee grote sectievlakken (paars en groen) en vier kleine kleurvlakken voor categorieën en data.</p>
 
     <h3>Kernkleuren</h3>
     <div class="swatch-grid">
-      <div class="swatch"><div class="chip" style="background:#2E1B33"></div><div class="meta"><strong>Aubergine 900</strong>#2E1B33 · tekst op licht</div></div>
-      <div class="swatch"><div class="chip" style="background:#3E2745"></div><div class="meta"><strong>Aubergine 700</strong>#3E2745 · primair merk</div></div>
-      <div class="swatch"><div class="chip" style="background:#5C4066"></div><div class="meta"><strong>Aubergine 500</strong>#5C4066 · info, hover</div></div>
-      <div class="swatch"><div class="chip" style="background:#9E8BB8"></div><div class="meta"><strong>Lila 300</strong>#9E8BB8 · markers, borders</div></div>
-      <div class="swatch"><div class="chip" style="background:#E6DFEE"></div><div class="meta"><strong>Lila 100</strong>#E6DFEE · zachte vlakken</div></div>
-      <div class="swatch"><div class="chip" style="background:#F5823D"></div><div class="meta"><strong>Oranje 500</strong>#F5823D · primair accent</div></div>
-      <div class="swatch"><div class="chip" style="background:#D9661F"></div><div class="meta"><strong>Oranje 600</strong>#D9661F · kleine tekst (AA)</div></div>
-      <div class="swatch"><div class="chip" style="background:#FAF3E8; border-bottom:1px solid #E6DFEE"></div><div class="meta"><strong>Crème 100</strong>#FAF3E8 · achtergrond</div></div>
+      <div class="swatch"><div class="chip" style="background:#412944"></div><div class="meta"><strong>Paars / Aubergine</strong>#412944 · primair merk · logo</div></div>
+      <div class="swatch"><div class="chip" style="background:#ef8a53"></div><div class="meta"><strong>Oranje</strong>#ef8a53 · accent · CTA · logo</div></div>
+      <div class="swatch"><div class="chip" style="background:#fcf8f0; border-bottom:1px solid #E6DFEE"></div><div class="meta"><strong>Crème</strong>#fcf8f0 · achtergrond</div></div>
+      <div class="swatch"><div class="chip" style="background:#282d31"></div><div class="meta"><strong>Antraciet</strong>#282d31 · tekst op crème</div></div>
+      <div class="swatch"><div class="chip" style="background:#435c52"></div><div class="meta"><strong>Groen</strong>#435c52 · groot sectievlak</div></div>
+      <div class="swatch"><div class="chip" style="background:#D9661F"></div><div class="meta"><strong>Oranje donker</strong>#D9661F · kleine tekst (AA, afgeleid)</div></div>
+    </div>
+
+    <div class="note" style="margin-top: var(--space-4);">
+      <strong>Let op — logo-asset:</strong> het aangeleverde <code>nectar-logo.svg</code> gebruikt <code>#fd8144</code> (oranje) en <code>#452846</code> (paars); dat wijkt licht af van de merkwaarden <code>#ef8a53</code> / <code>#412944</code>. Het SVG is as-is opgenomen in <code>./assets/</code>. Even bij de designer bevestigen welke waarden leidend zijn.
+    </div>
+
+    <h3 style="margin-top: var(--space-8);">Vier kleine kleurvlakken (categorieën)</h3>
+    <p>Voor categorieën, stappen en data-visualisatie. Elk vlak heeft een vaste betekenis in grafieken (<code>--cat-1</code> t/m <code>--cat-4</code>).</p>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="chip" style="background:#9ac191"></div><div class="meta"><strong>Appelgroen · cat-1</strong>#9ac191</div></div>
+      <div class="swatch"><div class="chip" style="background:#88a4bc"></div><div class="meta"><strong>Luchtblauw · cat-2</strong>#88a4bc</div></div>
+      <div class="swatch"><div class="chip" style="background:#a498b8"></div><div class="meta"><strong>Lavendel · cat-3</strong>#a498b8</div></div>
+      <div class="swatch"><div class="chip" style="background:#e2c076"></div><div class="meta"><strong>Zonneschijn · cat-4</strong>#e2c076</div></div>
+    </div>
+
+    <h3 style="margin-top: var(--space-8);">Kleurvlakken &amp; toegestane tekst-/icoonkleuren</h3>
+    <p>Op een kleurvlak mogen alléén de hieronder getoonde tekst- en icoonkleuren gebruikt worden. Zo blijft alles leesbaar en on-brand.</p>
+
+    <h4 style="font-family: var(--font-tech); font-weight: 400; margin: var(--space-6) 0 var(--space-3);">Grote vlakken</h4>
+    <div class="pairing-grid">
+      <div class="pairing" style="background:#412944;">
+        <div class="pairing-name" style="color:#fcf8f0;">Paars / Aubergine · #412944</div>
+        <span class="pill" style="background:#fcf8f0; color:#412944;">crème #fcf8f0</span>
+        <span class="pill" style="background:transparent; color:#a498b8; border:1.5px solid #a498b8;">lavendel #a498b8</span>
+        <p style="color:#fcf8f0; font-size: var(--text-xs); margin: var(--space-3) 0 0; max-width:none;">Bronspec noemt <code style="color:#e2c076;">#48344c</code> voor dit tekstvlak — te bevestigen.</p>
+      </div>
+      <div class="pairing" style="background:#435c52;">
+        <div class="pairing-name" style="color:#fcf8f0;">Groen · #435c52</div>
+        <span class="pill" style="background:#fcf8f0; color:#435c52;">crème #fcf8f0</span>
+        <span class="pill" style="background:transparent; color:#9ac191; border:1.5px solid #9ac191;">appelgroen #9ac191</span>
+      </div>
+    </div>
+
+    <h4 style="font-family: var(--font-tech); font-weight: 400; margin: var(--space-8) 0 var(--space-3);">Kleine vlakken</h4>
+    <p style="font-size: var(--text-sm); color: var(--color-text-muted);">Op elk klein vlak mag crème (#fcf8f0) als tekst/icoon, plus één extra donkere kleur per vlak.</p>
+    <div class="pairing-grid">
+      <div class="pairing" style="background:#9ac191;">
+        <div class="pairing-name" style="color:#30423a;">Appelgroen · #9ac191</div>
+        <span class="pill" style="background:#fcf8f0; color:#30423a;">crème #fcf8f0</span>
+        <span class="pill" style="background:transparent; color:#30423a; border:1.5px solid #30423a;">donkergroen #30423a</span>
+      </div>
+      <div class="pairing" style="background:#88a4bc;">
+        <div class="pairing-name" style="color:#2a353d;">Luchtblauw · #88a4bc</div>
+        <span class="pill" style="background:#fcf8f0; color:#2a353d;">crème #fcf8f0</span>
+        <span class="pill" style="background:transparent; color:#2a353d; border:1.5px solid #2a353d;">donkerblauw #2a353d</span>
+      </div>
+      <div class="pairing" style="background:#a498b8;">
+        <div class="pairing-name" style="color:#412944;">Lavendel · #a498b8</div>
+        <span class="pill" style="background:#fcf8f0; color:#412944;">crème #fcf8f0</span>
+        <span class="pill" style="background:transparent; color:#412944; border:1.5px solid #412944;">paars #412944</span>
+      </div>
+      <div class="pairing" style="background:#e2c076;">
+        <div class="pairing-name" style="color:#3f3121;">Zonneschijn · #e2c076</div>
+        <span class="pill" style="background:#fcf8f0; color:#3f3121;">crème #fcf8f0</span>
+        <span class="pill" style="background:transparent; color:#3f3121; border:1.5px solid #3f3121;">bruin #3f3121</span>
+      </div>
     </div>
 
     <h3 style="margin-top: var(--space-8);">Semantische kleuren</h3>
@@ -245,7 +339,7 @@ th { font-family: var(--font-accent); }
     </div>
 
     <div class="note" style="margin-top: var(--space-6);">
-      <strong>Toegankelijkheid:</strong> Oranje 500 op crème haalt géén AA-contrast voor kleine tekst. Gebruik oranje 500 alleen voor grote koppen (≥24px vet), knopvlakken en grafische elementen. Voor oranje lopende tekst en links: gebruik Oranje 600.
+      <strong>Toegankelijkheid:</strong> Oranje #ef8a53 op crème haalt géén AA-contrast voor kleine tekst. Gebruik oranje alleen voor grote koppen, knopvlakken en grafische elementen. Voor oranje lopende tekst en links: gebruik het donkerder Oranje #D9661F.
     </div>
   </div>
 </section>
@@ -255,24 +349,34 @@ th { font-family: var(--font-accent); }
   <div class="inner">
     <span class="eyebrow">03 · typografie</span>
     <h2>Typografie</h2>
-    <p>Drie rollen: een karaktervolle serif voor koppen, een ronde sans voor lopende tekst en een speelse sans voor labels en eyebrows. In deze v0.1 staan Google Fonts als benadering — vervang door de originele merk-fonts zodra de licentiebestanden binnen zijn.</p>
+    <p>Drie merk-fonts, elk met een vaste rol. De fonts zijn lokaal geleverd (<code>./fonts/</code>) en via <code>@font-face</code> gekoppeld — geen Google Fonts meer.</p>
 
     <table>
-      <tr><th>Rol</th><th>Font (v0.1)</th><th>Gebruik</th></tr>
-      <tr><td>Display</td><td>Fraunces (900/700)</td><td>H1–H3, hero-koppen, quotes</td></tr>
-      <tr><td>Body</td><td>Poppins (400/500/600)</td><td>Lopende tekst, UI, knoppen</td></tr>
-      <tr><td>Accent</td><td>Quicksand (600)</td><td>Stap-labels, eyebrows, badges</td></tr>
+      <tr><th>Rol</th><th>Font</th><th>Gebruik</th></tr>
+      <tr><td>Display</td><td>Recoleta Bold</td><td>H1, H2, H5 · hero-koppen</td></tr>
+      <tr><td>Tech</td><td>Michroma Regular</td><td>H3, H4 · quotes</td></tr>
+      <tr><td>Body</td><td>Oak Sans Regular</td><td>Lopende tekst, UI, knoppen</td></tr>
+      <tr><td>Body — menu</td><td>Oak Sans Bold</td><td>Menu-items / navigatie</td></tr>
+      <tr><td>Body — label</td><td>Oak Sans Medium</td><td>H6 (in kapitalen), eyebrows, badges</td></tr>
+      <tr><td>Decoratief</td><td>Segoe Script Bold</td><td>Nog geen vaste rol — beschikbaar in <code>--font-script</code></td></tr>
     </table>
 
-    <h3 style="margin-top: var(--space-8);">Typografische schaal</h3>
-    <div class="type-sample"><span class="label">hero · 60/1.1 · 900</span><span style="font-family:var(--font-display); font-size:var(--text-4xl); font-weight:900; line-height:1.1;">Laat je impact zien</span></div>
-    <div class="type-sample"><span class="label">h1 · 44/1.1 · 900</span><span style="font-family:var(--font-display); font-size:var(--text-3xl); font-weight:900;">Je impact helder inzien</span></div>
-    <div class="type-sample"><span class="label">h2 · 32/1.2 · 700</span><span style="font-family:var(--font-display); font-size:var(--text-2xl); font-weight:700;">Inzicht in vier stappen</span></div>
-    <div class="type-sample"><span class="label">h3 · 24/1.2 · 700</span><span style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:700;">Meet je doelen</span></div>
-    <div class="type-sample"><span class="label">intro · 20/1.6 · 400</span><span style="font-size:var(--text-lg);">Betrouwbare inzichten geven je overtuigingskracht.</span></div>
-    <div class="type-sample"><span class="label">body · 16/1.6 · 400</span><span>Met Nectar laat je iedereen zien welke sociale impact je maakt.</span></div>
-    <div class="type-sample"><span class="label">klein · 14/1.5 · 400</span><span style="font-size:var(--text-sm);">Secundaire informatie en toelichtingen.</span></div>
-    <div class="type-sample"><span class="label">bijschrift · 12 · 500</span><span style="font-size:var(--text-xs); font-weight:500;">Bron: Meetstandaard Social Impact, 2026</span></div>
+    <h3 style="margin-top: var(--space-8);">Koprollen &amp; fonts</h3>
+    <div class="type-sample"><span class="label">H1 · Recoleta Bold</span><span style="font-family:var(--font-display); font-size:var(--text-3xl); font-weight:700; color:var(--color-heading);">Je impact helder inzien</span></div>
+    <div class="type-sample"><span class="label">H2 · Recoleta Bold</span><span style="font-family:var(--font-display); font-size:var(--text-2xl); font-weight:700; color:var(--color-heading);">Inzicht in vier stappen</span></div>
+    <div class="type-sample"><span class="label">H3 · Michroma</span><span style="font-family:var(--font-tech); font-size:var(--text-lg); color:var(--color-heading);">Meet je doelen</span></div>
+    <div class="type-sample"><span class="label">H4 · Michroma</span><span style="font-family:var(--font-tech); font-size:var(--text-base); color:var(--color-heading);">Sector in beeld</span></div>
+    <div class="type-sample"><span class="label">H5 · Recoleta Bold</span><span style="font-family:var(--font-display); font-size:var(--text-base); font-weight:700; color:var(--color-heading);">Welzijn voor iedereen</span></div>
+    <div class="type-sample"><span class="label">H6 · Oak Sans Medium</span><span style="font-family:var(--font-body); font-weight:500; font-size:var(--text-sm); text-transform:uppercase; letter-spacing:0.08em; color:var(--color-heading);">Meetstandaard</span></div>
+    <div class="type-sample"><span class="label">Menu · Oak Sans Bold</span><span style="font-family:var(--font-body); font-weight:700; font-size:var(--text-base);">Overzicht · Metingen · Rapportages</span></div>
+    <div class="type-sample"><span class="label">Quote · Michroma</span><span style="font-family:var(--font-tech); font-size:var(--text-base); line-height:1.5;">Met Nectar heb ik mijn impact vergroot.</span></div>
+
+    <h3 style="margin-top: var(--space-8);">Typografische schaal (px / line-height)</h3>
+    <div class="type-sample"><span class="label">hero · 60/1.1</span><span style="font-family:var(--font-display); font-size:var(--text-4xl); font-weight:700; line-height:1.1; color:var(--color-heading);">Laat je impact zien</span></div>
+    <div class="type-sample"><span class="label">intro · 20/1.6</span><span style="font-size:var(--text-lg);">Betrouwbare inzichten geven je overtuigingskracht.</span></div>
+    <div class="type-sample"><span class="label">body · 16/1.6</span><span>Met Nectar laat je iedereen zien welke sociale impact je maakt.</span></div>
+    <div class="type-sample"><span class="label">klein · 14/1.5</span><span style="font-size:var(--text-sm);">Secundaire informatie en toelichtingen.</span></div>
+    <div class="type-sample"><span class="label">bijschrift · 12</span><span style="font-size:var(--text-xs); font-weight:500;">Bron: Meetstandaard Social Impact, 2026</span></div>
   </div>
 </section>
 
@@ -296,8 +400,24 @@ th { font-family: var(--font-accent); }
 <!-- ===================== 5. VORMENTAAL ===================== -->
 <section>
   <div class="inner">
-    <span class="eyebrow">05 · vormentaal</span>
-    <h2>Hexagon &amp; chevron</h2>
+    <span class="eyebrow">05 · logo &amp; vormentaal</span>
+    <h2>Logo, hexagon &amp; chevron</h2>
+
+    <h3>Logo</h3>
+    <p>Het logo bestaat uit een beeldmerk (honingraat + chevron) en een woordmerk. Gebruik het volledige logo waar mogelijk; het losse beeldmerk voor kleine of vierkante toepassingen (favicon, app-icoon). De bronbestanden staan in <code>./assets/</code>.</p>
+    <div class="logo-showcase">
+      <div class="logo-card">
+        <img src="./assets/nectar-logo.svg" alt="Nectar logo — volledig woordmerk met beeldmerk" style="max-width: 320px; width: 100%; height: auto;">
+        <div class="logo-cap">Volledig logo · <code>nectar-logo.svg</code></div>
+      </div>
+      <div class="logo-card">
+        <img src="./assets/nectar-beeldmerk.svg" alt="Nectar beeldmerk — honingraat met chevron" style="width: 108px; height: auto;">
+        <div class="logo-cap">Beeldmerk · <code>nectar-beeldmerk.svg</code></div>
+      </div>
+    </div>
+    <p style="font-size: var(--text-sm); color: var(--color-text-muted);">Plaats het logo op crème of op een rustig vlak met voldoende vrije ruimte (minimaal de hoogte van het beeldmerk rondom). Op donkere vlakken een crème/witte versie gebruiken (nog aan te leveren).</p>
+
+    <h3 style="margin-top: var(--space-8);">Hexagon &amp; chevron</h3>
     <p>De zeshoek (honingraat, uit het logo) en de chevron (beweging, vooruitgang) zijn de twee signatuurvormen. Gebruik ze voor foto-maskers, stap-markers en decoratieve clusters — maximaal één cluster per scherm.</p>
     <div class="hexes">
       <div class="hex-shape" style="background: var(--nectar-aubergine-700);"></div>
@@ -454,7 +574,7 @@ th { font-family: var(--font-accent); }
     <ul style="max-width: 65ch;">
       <li><strong>Kleurhiërarchie:</strong> oranje = altijd de eigen organisatie of de primaire actie; lila = sector/vergelijking; aubergine = navigatie en koppen. Zo leest elke grafiek zichzelf.</li>
       <li><strong>Dichtheid:</strong> compacter dan de website — <code>space-4</code>/<code>space-6</code> in plaats van <code>space-8</code>/<code>space-16</code>, tekst 14px als basis in tabellen.</li>
-      <li><strong>Getallen</strong> in display-serif (Fraunces 900) zodat KPI's dezelfde merkuitstraling houden als de website-koppen.</li>
+      <li><strong>Getallen</strong> in display-serif (Recoleta Bold) zodat KPI's dezelfde merkuitstraling houden als de website-koppen.</li>
       <li><strong>Grafieken:</strong> altijd een legenda én een tekstueel alternatief; maximaal twee kleuren per grafiek (eigen data + vergelijking).</li>
       <li><strong>Mobiel:</strong> sidebar wordt bottom-nav met maximaal vijf items; KPI-kaarten stapelen; tabellen worden kaartlijsten.</li>
       <li><strong>Laadgedrag:</strong> skeletons in crème-50, geen spinners op paginaniveau.</li>
@@ -510,14 +630,22 @@ th { font-family: var(--font-accent); }
     <h2>Design tokens (CSS)</h2>
     <p>Kopieer dit blok als <code>tokens.css</code> in website én app, zodat beide dezelfde bron delen. In React: importeer één keer globaal en gebruik <code>var(--...)</code> in alle componenten.</p>
     <pre>:root {
-  --nectar-aubergine-700: #3E2745;
-  --nectar-aubergine-300: #9E8BB8;
-  --nectar-oranje-500: #F5823D;
-  --nectar-oranje-600: #D9661F;
-  --nectar-creme-100: #FAF3E8;
+  --nectar-aubergine-700: #412944;   /* paars, primair merk */
+  --nectar-oranje-500: #ef8a53;      /* accent / CTA */
+  --nectar-oranje-600: #D9661F;      /* kleine tekst (AA) */
+  --nectar-creme-100: #fcf8f0;       /* achtergrond */
+  --nectar-antraciet: #282d31;       /* tekst op crème */
+  --nectar-groen-600: #435c52;       /* groot groen vlak */
 
-  --font-display: 'Fraunces', serif;
-  --font-body: 'Poppins', sans-serif;
+  /* 4 kleine kleurvlakken / categorieën */
+  --nectar-groen-300: #9ac191;       /* appelgroen  · cat-1 */
+  --nectar-luchtblauw-400: #88a4bc;  /* luchtblauw  · cat-2 */
+  --nectar-lila-400: #a498b8;        /* lavendel    · cat-3 */
+  --nectar-geel-400: #e2c076;        /* zonneschijn · cat-4 */
+
+  --font-display: 'Recoleta', serif;   /* H1, H2, H5 */
+  --font-tech: 'Michroma', sans-serif; /* H3, H4, quotes */
+  --font-body: 'Oak Sans', sans-serif; /* body, menu, H6 */
 
   --space-4: 1rem;  --space-8: 2rem;  --space-16: 4rem;
   --radius-md: 12px;  --radius-pill: 999px;
@@ -535,10 +663,14 @@ th { font-family: var(--font-accent); }
       <tr><th>Versie</th><th>Datum</th><th>Wijziging</th></tr>
       <tr><td>v0.1</td><td>15 juli 2026</td><td>Eerste versie op basis van brandbook-PDF</td></tr>
       <tr><td>v0.2</td><td>15 juli 2026</td><td>Website-sectie en app-sectie (voorzet) toegevoegd: app-shell, KPI-kaarten, benchmark-balken, empty state, toast</td></tr>
+      <tr><td>v0.3</td><td>15 juli 2026</td><td>Definitieve merkbestanden verwerkt: fonts (Recoleta, Michroma, Oak Sans + Segoe Script) via lokale <code>@font-face</code>; definitief kleurenpalet (#412944 / #ef8a53 / #fcf8f0 / #282d31 / #435c52); 4 categorie-kleurvlakken; kleurvlak-/tekstcombinatie-regels; logo- en beeldmerk-SVG opgenomen</td></tr>
     </table>
-    <h3 style="margin-top: var(--space-8);">Openstaand voor v0.3</h3>
+    <h3 style="margin-top: var(--space-8);">Openstaand voor v0.4</h3>
     <ul style="max-width: 65ch;">
-      <li>Exacte hexwaarden en fontnamen verifiëren tegen de originele merkbestanden (huidige waarden zijn benaderingen uit de PDF).</li>
+      <li><strong>Logo-kleuren afstemmen:</strong> <code>nectar-logo.svg</code> gebruikt #fd8144/#452846, het palet #ef8a53/#412944 — bevestigen welke leidend is en het SVG evt. hertekenen.</li>
+      <li><strong>Aubergine tekstvlak:</strong> bronspec noemt zowel #412944 als #48344c voor het grote aubergine-vlak — één waarde vaststellen.</li>
+      <li><strong>Logo op donker:</strong> crème/witte logo-variant aanleveren voor aubergine- en oranje-vlakken.</li>
+      <li><strong>Segoe Script</strong> een vaste rol geven of schrappen (nu alleen beschikbaar als <code>--font-script</code>).</li>
       <li>App-componenten uitbreiden: tabellen/kaartlijsten, modals, filters, heatmap voor subtypen, AI-assistent (Decca) chat-patroon.</li>
       <li>Mobiele bottom-nav en responsive gedrag van dashboards uitwerken.</li>
       <li>Fotografie-richtlijnen uitwerken (stijl, rechten, hexagon-maskers).</li>
