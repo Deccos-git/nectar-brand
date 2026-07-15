@@ -1,0 +1,99 @@
+/* ==========================================================
+   NECTAR DESIGN TOKENS — ENIGE bron van de huisstijl.
+   Bewerk waarden ALLEEN hier, niet in website/app.
+   Namen liggen vast (gedeeld vocabulaire met de designer);
+   wijzig namen niet, alleen waarden.
+
+   Let op: hexwaarden zijn nog benaderingen uit de brand-PDF.
+   De designer levert later de definitieve waarden (v0.3).
+   ========================================================== */
+:root {
+  /* --- Kleur: kern --- */
+  --nectar-aubergine-900: #2E1B33;
+  --nectar-aubergine-700: #3E2745;   /* primaire merkkleur */
+  --nectar-aubergine-500: #5C4066;
+  --nectar-aubergine-300: #9E8BB8;   /* lila accent (stappen) */
+  --nectar-aubergine-100: #E6DFEE;
+
+  --nectar-oranje-600: #D9661F;      /* oranje voor kleine tekst (AA) */
+  --nectar-oranje-500: #F5823D;      /* primair accent */
+  --nectar-oranje-100: #FDE4D2;
+
+  --nectar-creme-100: #FAF3E8;       /* standaard achtergrond */
+  --nectar-creme-50:  #FDFAF4;
+  --nectar-wit: #FFFFFF;
+
+  /* --- Kleur: categorie (data-viz, stappen, sectievlakken) ---
+     Nieuw t.o.v. v0.2. Waarden gesampeld uit de brand-deck,
+     nog te verifiëren door de designer (v0.3). */
+  --nectar-groen-600: #3B5D52;       /* bosgroen, sectievlak */
+  --nectar-groen-300: #89A589;       /* salie, categorie 1 */
+  --nectar-lila-400:  #A498B8;       /* categorie 2 */
+  --nectar-koraal-400: #E58A76;      /* categorie 3 */
+  --nectar-geel-400:  #F1B14E;       /* mosterd, categorie 4 */
+
+  /* --- Kleur: semantisch --- */
+  --color-bg: var(--nectar-creme-100);
+  --color-bg-inverse: var(--nectar-aubergine-700);
+  --color-text: var(--nectar-aubergine-900);
+  --color-text-inverse: var(--nectar-creme-100);
+  --color-text-muted: #6B5A72;
+  --color-accent: var(--nectar-oranje-500);
+  --color-accent-text: var(--nectar-oranje-600);
+  --color-success: #3E7C4F;
+  --color-warning: #B87514;
+  --color-error: #B3402F;
+  --color-info: var(--nectar-aubergine-500);
+  --color-focus: #2E5FA3;
+
+  /* --- Kleur: categorie-laag (grafieken binden hieraan) --- */
+  --cat-1: var(--nectar-groen-300);
+  --cat-2: var(--nectar-lila-400);
+  --cat-3: var(--nectar-koraal-400);
+  --cat-4: var(--nectar-geel-400);
+
+  /* --- Typografie --- */
+  --font-display: 'Fraunces', Georgia, serif;      /* koppen */
+  --font-body: 'Poppins', system-ui, sans-serif;   /* lopende tekst */
+  --font-accent: 'Quicksand', system-ui, sans-serif; /* stap-labels, eyebrows */
+
+  --text-xs: 0.75rem;    /* 12 — bijschriften */
+  --text-sm: 0.875rem;   /* 14 — secundair */
+  --text-base: 1rem;     /* 16 — body */
+  --text-lg: 1.25rem;    /* 20 — intro's */
+  --text-xl: 1.5rem;     /* 24 — H3 */
+  --text-2xl: 2rem;      /* 32 — H2 */
+  --text-3xl: 2.75rem;   /* 44 — H1 */
+  --text-4xl: 3.75rem;   /* 60 — hero */
+
+  --leading-tight: 1.1;
+  --leading-normal: 1.6;
+
+  /* --- Spacing (8-punts, met 4 als half-stap) --- */
+  --space-1: 0.25rem;  /* 4 */
+  --space-2: 0.5rem;   /* 8 */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-6: 1.5rem;   /* 24 */
+  --space-8: 2rem;     /* 32 */
+  --space-12: 3rem;    /* 48 */
+  --space-16: 4rem;    /* 64 */
+  --space-24: 6rem;    /* 96 */
+
+  /* --- Vorm --- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --shadow-card: 0 4px 20px rgba(46, 27, 51, 0.10);
+  --shadow-raised: 0 10px 32px rgba(46, 27, 51, 0.16);
+
+  /* --- Motion --- */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* --- Layout --- */
+  --container: 72rem;
+  --bp-sm: 640px;  --bp-md: 768px;  --bp-lg: 1024px;
+}
