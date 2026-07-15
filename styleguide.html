@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nectar Design Guide — v0.6</title>
+<title>Nectar Design Guide — v0.7</title>
 <link rel="stylesheet" href="./tokens.css">
 <style>
 /* ==========================================================
@@ -320,6 +320,56 @@ section { padding: var(--space-16) var(--space-6); border-bottom: 1px solid var(
 .mini-kpi .num { font-family: var(--font-display); font-weight: 700; font-size: var(--text-2xl); color: var(--color-heading); }
 @media (max-width: 640px) { .shell { grid-template-columns: 1fr; } }
 
+/* Nectar AI-paneel */
+.ai-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); align-items: start; }
+.ai-panel { background: var(--nectar-wit); border-radius: var(--radius-lg); box-shadow: var(--shadow-raised); overflow: hidden; display: flex; flex-direction: column; height: 520px; }
+.ai-head { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-4); border-bottom: 1px solid var(--nectar-aubergine-100); }
+.ai-avatar-wrap { position: relative; flex: none; }
+.ai-avatar { border-radius: var(--radius-pill); background: var(--nectar-aubergine-700); display: grid; place-items: center; color: var(--nectar-creme-100); font-family: var(--font-display); font-weight: 700; flex: none; width: 40px; height: 40px; }
+.ai-avatar.sm { width: 28px; height: 28px; font-size: var(--text-xs); }
+.ai-avatar.lg { width: 64px; height: 64px; font-size: var(--text-2xl); box-shadow: var(--shadow-card); }
+.ai-status-dot { position: absolute; bottom: 0; right: 0; width: 10px; height: 10px; border-radius: var(--radius-pill); background: var(--color-success); border: 2px solid var(--nectar-wit); }
+.ai-title { font-family: var(--font-body); font-weight: 700; color: var(--color-heading); }
+.ai-sub { font-size: var(--text-xs); color: var(--color-text-muted); }
+.ai-head-icons { display: flex; gap: var(--space-2); align-items: center; color: var(--nectar-aubergine-300); }
+.ai-body { flex: 1; overflow: hidden; padding: var(--space-4); background: var(--nectar-creme-50); display: flex; flex-direction: column; gap: var(--space-4); }
+.ai-msg { display: flex; gap: var(--space-2); align-items: flex-start; }
+.ai-msg.user { justify-content: flex-end; }
+.ai-bubble { background: var(--nectar-wit); border-radius: 4px 16px 16px 16px; padding: var(--space-3) var(--space-4); font-size: var(--text-sm); box-shadow: var(--shadow-card); max-width: 85%; }
+.ai-bubble.user { background: var(--nectar-oranje-100); color: var(--nectar-bruin); border-radius: 16px 4px 16px 16px; box-shadow: none; padding: var(--space-2) var(--space-4); }
+.ai-input { padding: var(--space-3) var(--space-4); }
+.ai-input-box { display: flex; align-items: center; gap: var(--space-2); border: 1.5px solid var(--nectar-aubergine-300); border-radius: var(--radius-pill); padding: var(--space-1) var(--space-1) var(--space-1) var(--space-4); background: var(--nectar-wit); }
+.ai-input-box .placeholder { flex: 1; font-size: var(--text-sm); color: var(--color-text-muted); }
+.ai-send { width: 34px; height: 34px; border-radius: var(--radius-pill); border: none; background: var(--nectar-oranje-500); color: var(--nectar-aubergine-900); cursor: pointer; display: grid; place-items: center; flex: none; }
+.ai-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-4); padding: var(--space-8); text-align: center; }
+.ai-history-search { display: flex; align-items: center; gap: var(--space-2); background: var(--nectar-creme-50); border: 1px solid var(--nectar-aubergine-100); border-radius: var(--radius-pill); padding: var(--space-2) var(--space-4); }
+.ai-history-group { font-family: var(--font-accent); font-weight: 600; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); padding: var(--space-2) var(--space-3); }
+.ai-history-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); cursor: pointer; }
+.ai-history-item:hover { background: var(--nectar-creme-50); }
+.ai-history-icon { width: 34px; height: 34px; border-radius: var(--radius-sm); background: var(--nectar-aubergine-100); display: grid; place-items: center; flex: none; color: var(--nectar-aubergine-700); }
+.ai-history-item .grow { flex: 1; min-width: 0; }
+.ai-history-item .h-title { font-weight: 600; font-size: var(--text-sm); color: var(--color-heading); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ai-history-item .date { font-size: var(--text-xs); color: var(--color-text-muted); flex: none; }
+
+/* Sectie-landingspagina's */
+.section-hero { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-raised); background: var(--nectar-aubergine-700); }
+.section-hero-top { display: grid; grid-template-columns: 1.4fr 1fr; }
+.section-hero-copy { padding: var(--space-12); }
+.eyebrow-orange { font-family: var(--font-accent); font-weight: 600; letter-spacing: 0.14em; text-transform: lowercase; color: var(--nectar-oranje-500); font-size: var(--text-sm); }
+.section-hero-title { font-family: var(--font-display); font-weight: 700; font-size: var(--text-4xl); line-height: var(--leading-tight); margin: var(--space-3) 0 var(--space-6); color: var(--nectar-creme-100); }
+.section-hero-copy p { font-size: var(--text-lg); line-height: var(--leading-normal); color: var(--nectar-aubergine-100); max-width: 46ch; margin: 0; }
+.section-hero-visual { position: relative; background: linear-gradient(150deg, var(--nectar-aubergine-500), var(--nectar-aubergine-900)); display: grid; place-items: center; min-height: 220px; }
+.section-hex { width: 160px; height: 184px; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: linear-gradient(150deg, var(--nectar-oranje-500), var(--nectar-oranje-600)); display: grid; place-items: center; color: var(--nectar-aubergine-900); }
+.section-hex-echo { position: absolute; bottom: 20px; right: 20px; width: 44px; height: 50px; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: var(--nectar-aubergine-300); opacity: 0.5; }
+.section-steps { background: var(--nectar-creme-50); padding: var(--space-8); display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: var(--space-4); }
+.step-card { background: var(--nectar-wit); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); cursor: pointer; transition: transform var(--duration-fast) var(--ease-out); }
+.step-card:hover { transform: translateY(-3px); }
+.step-card .num { font-family: var(--font-display); font-weight: 700; font-size: var(--text-3xl); color: var(--nectar-oranje-500); line-height: 1; }
+.step-card .s-title { font-family: var(--font-tech); font-size: var(--text-lg); color: var(--color-heading); }
+.step-card p { font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; flex: 1; }
+.step-card .action { display: flex; align-items: center; gap: var(--space-2); color: var(--color-accent-text); font-family: var(--font-accent); font-weight: 600; font-size: var(--text-sm); }
+@media (max-width: 640px) { .section-hero-top { grid-template-columns: 1fr; } }
+
 table { border-collapse: collapse; width: 100%; max-width: 60rem; font-size: var(--text-sm); }
 th, td { text-align: left; padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--nectar-aubergine-100); }
 th { font-family: var(--font-accent); }
@@ -332,7 +382,7 @@ th { font-family: var(--font-accent); }
     <img src="./assets/nectar-logo-wit.svg" alt="Nectar — laat je impact zien" style="display: block; width: 220px; height: auto;">
     <h1 style="margin-top: var(--space-8); color: var(--nectar-creme-100);">Design guide</h1>
     <p style="color: var(--nectar-aubergine-100);">Eén bron van waarheid voor de Nectar-huisstijl in website, app en rapporten. Kleuren en fonts zijn nu de <strong style="color: var(--nectar-creme-100);">definitieve merkwaarden</strong> zoals aangeleverd door de designer (juli 2026).</p>
-    <span class="version-pill">v0.6 — app-shell (sidebar, org-switcher, topbar) in §09 · v0.5 kleurpalet gelijk aan logo</span>
+    <span class="version-pill">v0.7 — Nectar AI-paneel + sectie-landingspagina's in §09 · v0.6 app-shell</span>
   </div>
 </header>
 
@@ -708,7 +758,7 @@ th { font-family: var(--font-accent); }
   <div class="inner">
     <span class="eyebrow">09 · app-componenten</span>
     <h2>App-componenten</h2>
-    <p>Concrete uitwerking van §08: de componenten die de app vandaag hardgecodeerd tekent — de app-shell (sidebar &amp; topbar), knoppen, kaarten, tabs, modals, tabellen, save-bar en laadstatus — hertekend op de bestaande tokens. Puur additief: geen nieuwe tokenwaarden, alleen nieuwe componentregels/-klassen.</p>
+    <p>Concrete uitwerking van §08: de componenten die de app vandaag hardgecodeerd tekent — de app-shell (sidebar &amp; topbar), het Nectar AI-paneel, de sectie-landingspagina's, knoppen, kaarten, tabs, modals, tabellen, save-bar en laadstatus — hertekend op de bestaande tokens. Puur additief: geen nieuwe tokenwaarden, alleen nieuwe componentregels/-klassen.</p>
 
     <h3>App-shell — sidebar &amp; topbar</h3>
     <p>De app-shell van vandaag mengt losse tinten (<code>#f3f7fd</code>, <code>#fafbff</code>, teal, koraal <code>#f48184</code>, felgroen <code>#07b907</code>). Hier volledig op tokens: sidebar in aubergine met crème logo en oranje actief-markering, topbar wit op crème met één aubergine-100 scheidingslijn. Alle status- en accentkleuren komen uit de semantische laag.</p>
@@ -760,7 +810,165 @@ th { font-family: var(--font-accent); }
       <div class="dont"><strong>✗ Niet</strong> Losse blauw-grijzen (<code>#f3f7fd</code>, <code>#fafbff</code>) voor shell-vlakken, koraal <code>#f48184</code> voor badges/CTA, of felgroen <code>#07b907</code> voor de opgeslagen-balk.</div>
     </div>
 
-    <h3>Knoppen — app-maat</h3>
+    <h3>Nectar AI-paneel</h3>
+    <p>De AI-adviseur (voorheen "Decca") staat nu buiten de huisstijl: teal-blauwe avatar, blauw-grijze <code>#f3f7fd</code> achtergrond, roze user-bubbels <code>#fae5e5</code>, grijze assistent-bubbels <code>#b1c1c4</code>. Hier op tokens: aubergine avatar met "N", crème paneel, oranje user-bubbel, witte assistent-kaart.</p>
+    <div class="ai-grid">
+      <!-- gesprek -->
+      <div class="ai-panel">
+        <div class="ai-head">
+          <div class="ai-avatar-wrap">
+            <div class="ai-avatar">N</div>
+            <span class="ai-status-dot"></span>
+          </div>
+          <div style="flex:1; min-width:0;">
+            <div class="ai-title">Nectar AI</div>
+            <div class="ai-sub">Impact-adviseur</div>
+          </div>
+          <div class="ai-head-icons">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a7 7 0 107-7 7 7 0 00-5 2.1L3 7"/><path d="M3 4v3h3M10 6v4l2.5 1.5"/></svg>
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3l4 4-9 9H4v-4z"/></svg>
+            <span style="font-size: var(--text-lg); line-height:1; cursor:pointer;">×</span>
+          </div>
+        </div>
+        <div class="ai-body">
+          <div class="ai-msg">
+            <div class="ai-avatar sm">N</div>
+            <div class="ai-bubble">Hoi Gijs! Ik help je je Theory of Change afronden. Vertel me kort wat je organisatie doet en voor wie.</div>
+          </div>
+          <div class="ai-msg user">
+            <div class="ai-bubble user">oké</div>
+          </div>
+          <div class="ai-msg">
+            <div class="ai-avatar sm">N</div>
+            <div class="ai-bubble">Geweldig! We willen minstens één compleet pad: <strong>doelgroep → activiteit → effect</strong>.</div>
+          </div>
+        </div>
+        <div class="ai-input">
+          <div class="ai-input-box">
+            <span class="placeholder">Typ een bericht…</span>
+            <span style="color: var(--nectar-aubergine-300);"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7.5" y="2.5" width="5" height="10" rx="2.5"/><path d="M5 9a5 5 0 0010 0M10 15v2.5"/></svg></span>
+            <button class="ai-send" aria-label="Versturen"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16V4M5 9l5-5 5 5"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <!-- leeg -->
+      <div class="ai-panel">
+        <div class="ai-head">
+          <div class="ai-avatar">N</div>
+          <div style="flex:1;"><div class="ai-title">Nectar AI</div><div class="ai-sub">Impact-adviseur</div></div>
+        </div>
+        <div class="ai-empty">
+          <div class="ai-avatar lg">N</div>
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin:0; max-width:24ch;">Start een nieuw gesprek met Nectar AI.</p>
+          <button class="btn btn-primary">Nieuw gesprek</button>
+        </div>
+      </div>
+      <!-- geschiedenis -->
+      <div class="ai-panel">
+        <div class="ai-head">
+          <span style="color: var(--nectar-aubergine-700); font-size: var(--text-lg); cursor:pointer;">‹</span>
+          <div style="flex:1; font-family: var(--font-display); font-weight:700; font-size: var(--text-lg); color: var(--color-heading);">Gesprekken</div>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="var(--nectar-aubergine-300)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3l4 4-9 9H4v-4z"/></svg>
+        </div>
+        <div class="ai-input">
+          <div class="ai-history-search">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="var(--nectar-aubergine-300)" stroke-width="1.6" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5"/><path d="M12.5 12.5L17 17"/></svg>
+            <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Zoek in gesprekken…</span>
+          </div>
+        </div>
+        <div style="flex:1; overflow:hidden; padding: 0 var(--space-2);">
+          <div class="ai-history-group">Deze week</div>
+          <div class="ai-history-item">
+            <div class="ai-history-icon"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a7 7 0 107-7 7 7 0 00-5 2.1L3 7"/><path d="M3 4v3h3M10 6v4l2.5 1.5"/></svg></div>
+            <div class="grow"><div class="h-title">Analyse van Zelfvertrouwen</div></div>
+            <span class="date">13 jul</span>
+          </div>
+          <div class="ai-history-item">
+            <div class="ai-history-icon"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a7 7 0 107-7 7 7 0 00-5 2.1L3 7"/><path d="M3 4v3h3M10 6v4l2.5 1.5"/></svg></div>
+            <div class="grow"><div class="h-title">Gesprek over impactstrategie</div></div>
+            <span class="date">9 jul</span>
+          </div>
+          <div class="ai-history-group">Eerder</div>
+          <div class="ai-history-item">
+            <div class="ai-history-icon"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a7 7 0 107-7 7 7 0 00-5 2.1L3 7"/><path d="M3 4v3h3M10 6v4l2.5 1.5"/></svg></div>
+            <div class="grow"><div class="h-title">TOC afronden met Nectar AI</div></div>
+            <span class="date">25 jun</span>
+          </div>
+          <div class="ai-history-item">
+            <div class="ai-history-icon"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a7 7 0 107-7 7 7 0 00-5 2.1L3 7"/><path d="M3 4v3h3M10 6v4l2.5 1.5"/></svg></div>
+            <div class="grow"><div class="h-title">Gesprek over Theory of Change</div></div>
+            <span class="date">22 jun</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="note" style="margin-top: var(--space-6);">
+      Vervangt in <code>decca.css</code>/<code>chatscreen.css</code>: <code>#f3f7fd</code>-panelen → crème, user-bubbel <code>#fae5e5</code> → oranje-100, assistent-bubbel <code>#b1c1c4</code> → witte kaart met <code>--shadow-card</code>, teal avatar → aubergine met "N", verzendknop → oranje.
+    </div>
+
+    <h3 style="margin-top: var(--space-8);">Sectie-landingspagina's</h3>
+    <p>De drie level-1 ouderpagina's — <strong>Meten</strong>, <strong>Ondersteuning</strong> en <strong>Communiceren</strong> — delen één template: paginakop in display-serif met hexagon-icoon, intro-tekst en genummerde kaartrijen met een chevron-actie. Vervangt de grijze <code>#f4f4f4</code>-lijnen met tekst-only "Bekijk".</p>
+
+    <div class="section-hero" style="margin-bottom: var(--space-6);">
+      <div class="section-hero-top">
+        <div class="section-hero-copy">
+          <span class="eyebrow-orange">sectie · meten</span>
+          <div class="section-hero-title">Meten</div>
+          <p>Welkom bij het meten, Gijs. Hier onderbouw je de effecten uit je impactstrategie met echte data die je bij je doelgroepen ophaalt — van persoonlijke verhalen tot gevalideerde vragenlijsten. Kies hieronder waar je verder wilt.</p>
+        </div>
+        <div class="section-hero-visual">
+          <div class="section-hex"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v5a6 6 0 0012 0V3"/><path d="M6 21v-5a6 6 0 0112 0v5"/><path d="M5 3h14M5 21h14"/></svg></div>
+          <div class="section-hex-echo"></div>
+        </div>
+      </div>
+      <div class="section-steps">
+        <div class="step-card"><div class="num">01</div><div class="s-title">Storytelling</div><p>Verhalen van deelnemers vastleggen als kwalitatief bewijs.</p><div class="action">Bekijk<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></div></div>
+        <div class="step-card"><div class="num">02</div><div class="s-title">Activiteiten</div><p>Resultaten per activiteit bijhouden en onderbouwen.</p><div class="action">Bekijk<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></div></div>
+        <div class="step-card"><div class="num">03</div><div class="s-title">Onderzoeken</div><p>Metingen opzetten, uitzetten en uitvoeren.</p><div class="action">Bekijk<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></div></div>
+        <div class="step-card"><div class="num">04</div><div class="s-title">Vragenlijsten</div><p>Gevalideerde vragen uit de meetstandaard beheren.</p><div class="action">Bekijk<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></div></div>
+      </div>
+    </div>
+
+    <div class="section-hero" style="margin-bottom: var(--space-6);">
+      <div class="section-hero-top">
+        <div class="section-hero-copy">
+          <span class="eyebrow-orange">sectie · ondersteuning</span>
+          <div class="section-hero-title">Ondersteuning</div>
+          <p>Welkom bij ondersteuning, Gijs. Hier beheer je de mensen achter je impact — deelnemers, huishoudens en intakeformulieren — op één overzichtelijke plek. Kies hieronder waar je verder wilt.</p>
+        </div>
+        <div class="section-hero-visual">
+          <div class="section-hex"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.2"/><path d="M3 19a6 6 0 0112 0M14.5 19a5 5 0 016.5-4.8"/></svg></div>
+          <div class="section-hex-echo"></div>
+        </div>
+      </div>
+      <div class="section-steps">
+        <div class="step-card"><div class="num">01</div><div class="s-title">Deelnemers</div><p>Deelnemers en hun voortgang beheren.</p><div class="action">Bekijk<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></div></div>
+        <div class="step-card"><div class="num">02</div><div class="s-title">Huishoudens</div><p>Huisbezoeken en adressen bijhouden.</p><div class="action">Bekijk<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></div></div>
+        <div class="step-card"><div class="num">03</div><div class="s-title">Intakeformulieren</div><p>Formulieren opstellen en antwoorden verzamelen.</p><div class="action">Bekijk<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></div></div>
+      </div>
+    </div>
+
+    <div class="section-hero">
+      <div class="section-hero-top">
+        <div class="section-hero-copy">
+          <span class="eyebrow-orange">sectie · communiceren</span>
+          <div class="section-hero-title">Communiceren</div>
+          <p>Welkom bij communiceren, Gijs. Hier deel je je gerealiseerde en onderbouwde impact met financiers en gemeenten via live-rapportages — altijd actueel, altijd traceerbaar.</p>
+        </div>
+        <div class="section-hero-visual">
+          <div class="section-hex"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 9h6M7 13h10"/></svg></div>
+          <div class="section-hex-echo"></div>
+        </div>
+      </div>
+      <div class="section-steps">
+        <div class="step-card"><div class="num">01</div><div class="s-title">Live-rapportages</div><p>Impact live delen met financiers en gemeenten.</p><div class="action">Bekijk<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></div></div>
+      </div>
+    </div>
+    <div class="note" style="margin-top: var(--space-6);">
+      Vervangt in <code>sectionexplainer.css</code>: de <code>#f4f4f4</code>-lijnen op <code>segment-overview-step</code> → crème-50 kaartrijen met genummerde badge en chevron; <code>.page-header</code>-icoon (grijze MUI-svg) → aubergine icoontegel. De icoontegels tonen de plek van de bestaande MUI-iconen — de app blijft die gebruiken, alleen de kleur wordt <code>--nectar-aubergine-700</code>.
+    </div>
+
+    <h3 style="margin-top: var(--space-8);">Knoppen — app-maat</h3>
     <p>Zelfde knoppen als §06, maar compacter voor werkschermen (<code>.btn-sm</code>: <code>space-2 / space-4</code>, <code>text-sm</code>). Eén primaire per scherm. Destructief (<code>.btn-danger</code>) is tekst in <code>--color-error</code> zónder vlak; het rode vlak (<code>.btn-danger-solid</code>) verschijnt pas bij bevestiging in een modal. Raakvlak blijft 44×44px.</p>
     <div class="demo-block">
       <div class="demo-row">
@@ -986,6 +1194,7 @@ th { font-family: var(--font-accent); }
       <tr><td>v0.4</td><td>15 juli 2026</td><td>§09 app-componenten toegevoegd (uit design-handoff): app-maat + destructieve knoppen, kaarten/lijstrijen, tabs + segment-pills, modals, data-tabel, save-bar en skeletons — als herbruikbare klassen op bestaande tokens</td></tr>
       <tr><td>v0.5</td><td>15 juli 2026</td><td>Designer-antwoorden verwerkt: kleurpalet gelijkgetrokken met logo (oranje #ef8a53→#fd8144, paars/aubergine #412944→#452846, #48344c vervallen); lavendel #a498b8→#a397b7; crème logo-/beeldmerk-varianten toegevoegd en toegepast op donkere vlakken (koptekst + app-shell); logo-gebruiksregels (gekleurd=crème-achtergrond, crème=kleurvlakken)</td></tr>
       <tr><td>v0.6</td><td>15 juli 2026</td><td>§09 uitgebreid met de app-shell (uit design-handoff): sidebar met org-switcher, werkruimte-nav, upgrade-CTA; topbar met opgeslagen-balk, breadcrumb, notificatie-badge en gebruikersmenu — losse tinten (#f3f7fd, #fafbff, teal, koraal #f48184, #07b907) vervangen door tokens</td></tr>
+      <tr><td>v0.7</td><td>15 juli 2026</td><td>§09 uitgebreid (uit design-handoff): Nectar AI-paneel (3 states: gesprek, leeg, geschiedenis) — vervangt de off-brand "Decca"-chat (#f3f7fd/#fae5e5/#b1c1c4/teal); en sectie-landingspagina's (Meten, Ondersteuning, Communiceren) met aubergine hero + hexagon-icoon en genummerde kaartrijen — vervangt de grijze #f4f4f4 explainer-lijnen</td></tr>
     </table>
     <h3 style="margin-top: var(--space-8);">Opgelost (designer-antwoorden)</h3>
     <ul style="max-width: 65ch;">
