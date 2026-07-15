@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nectar Design Guide — v0.3</title>
+<title>Nectar Design Guide — v0.4</title>
 <link rel="stylesheet" href="./tokens.css">
 <style>
 /* ==========================================================
@@ -225,6 +225,62 @@ section { padding: var(--space-16) var(--space-6); border-bottom: 1px solid var(
 .toast { display: inline-flex; gap: var(--space-2); align-items: center; background: var(--nectar-aubergine-900); color: var(--nectar-wit); border-radius: var(--radius-pill); padding: var(--space-2) var(--space-4); font-size: var(--text-sm); }
 @media (max-width: 768px) { .app-frame { grid-template-columns: 1fr; } .app-side { flex-direction: row; flex-wrap: wrap; } }
 
+/* ===================== App-componenten (§09) =====================
+   Additief op §08. Uitsluitend bestaande tokens; nieuwe componentregels. */
+
+/* Knoppen — app-maat + destructief */
+.btn-sm { font-size: var(--text-sm); padding: var(--space-2) var(--space-4); }
+.btn-danger { background: transparent; color: var(--color-error); }
+.btn-danger:hover { background: #F6DAD5; color: var(--color-error); }
+.btn-danger-solid { background: var(--color-error); color: var(--nectar-wit); }
+.btn-danger-solid:hover { background: #9A2E20; color: var(--nectar-wit); }
+
+/* Kaarten & lijstrijen */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); }
+.card { background: var(--nectar-wit); border-radius: var(--radius-md); box-shadow: var(--shadow-card); overflow: hidden; display: flex; flex-direction: column; }
+.card-media { height: 110px; display: grid; place-items: center; font-family: ui-monospace, monospace; font-size: var(--text-xs); color: var(--color-text-muted);
+  background: repeating-linear-gradient(135deg, var(--nectar-aubergine-100), var(--nectar-aubergine-100) 10px, var(--nectar-creme-50) 10px, var(--nectar-creme-50) 20px); }
+.card-accent { height: 6px; }
+.card-body { padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); }
+.card-body h4, .card-body .title { font-family: var(--font-tech); font-weight: 400; font-size: var(--text-base); margin: 0; color: var(--color-heading); }
+.list { display: flex; flex-direction: column; gap: var(--space-2); max-width: 640px; }
+.list-row { background: var(--nectar-wit); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: var(--space-3) var(--space-4); display: flex; align-items: center; gap: var(--space-3); }
+.list-row .avatar { width: 40px; height: 40px; border-radius: var(--radius-pill); flex: none; background: var(--nectar-aubergine-100); }
+.list-row .grow { flex: 1; min-width: 0; }
+.list-row .grow .sub { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+/* Tabs + segment-pills */
+.tabs { display: flex; gap: var(--space-6); border-bottom: 1px solid var(--nectar-aubergine-100); }
+.tab { font-family: var(--font-body); font-weight: 500; font-size: var(--text-sm); padding: var(--space-3) 0; color: var(--color-text-muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+.tab.active { font-weight: 700; color: var(--nectar-aubergine-700); border-bottom-color: var(--nectar-oranje-500); }
+.segmented { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.seg { font-family: var(--font-accent); font-size: var(--text-sm); font-weight: 500; padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); background: transparent; color: var(--color-text-muted); border: 1px solid var(--nectar-aubergine-300); cursor: pointer; }
+.seg.active { font-weight: 600; background: var(--nectar-aubergine-700); color: var(--nectar-creme-100); border-color: transparent; }
+
+/* Modals */
+.modal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-6); }
+.modal-overlay { background: rgba(46, 27, 51, 0.45); border-radius: var(--radius-lg); padding: var(--space-8); display: grid; place-items: center; min-height: 300px; }
+.modal { background: var(--nectar-wit); border-radius: var(--radius-lg); box-shadow: var(--shadow-raised); width: 100%; max-width: 360px; overflow: hidden; }
+.modal-head { padding: var(--space-6) var(--space-6) var(--space-4); display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); }
+.modal-head h3 { margin: 0; }
+.modal-close { font-size: var(--text-xl); color: var(--color-text-muted); cursor: pointer; line-height: 1; background: none; border: none; }
+.modal-body { padding: 0 var(--space-6) var(--space-4); }
+.modal-foot { padding: var(--space-4) var(--space-6); background: var(--nectar-creme-50); display: flex; justify-content: flex-end; gap: var(--space-2); }
+
+/* Data-tabel (kaart-variant) */
+.table-card { background: var(--nectar-wit); border-radius: var(--radius-md); box-shadow: var(--shadow-card); overflow: hidden; max-width: 720px; }
+.data-table { border-collapse: collapse; width: 100%; font-size: var(--text-sm); }
+.data-table thead tr { background: var(--nectar-creme-50); }
+.data-table th { text-align: left; padding: var(--space-3) var(--space-4); font-family: var(--font-accent); font-weight: 600; color: var(--color-heading); }
+.data-table td { padding: var(--space-3) var(--space-4); border-top: 1px solid var(--nectar-aubergine-100); }
+.data-table tbody tr:nth-child(even) { background: var(--nectar-creme-50); }
+.data-table tbody tr:hover { background: var(--nectar-oranje-100); }
+
+/* Save-bar + skeletons */
+.save-bar { position: sticky; bottom: 0; background: var(--nectar-creme-50); box-shadow: 0 -4px 20px rgba(46, 27, 51, 0.10); display: flex; justify-content: flex-end; gap: var(--space-2); padding: var(--space-3) var(--space-4); }
+.skeleton { background: var(--nectar-wit); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: var(--space-4); width: 220px; display: flex; flex-direction: column; gap: var(--space-3); }
+.skeleton-line { border-radius: var(--radius-sm); background: var(--nectar-creme-50); border: 1px solid var(--nectar-aubergine-100); }
+
 table { border-collapse: collapse; width: 100%; max-width: 60rem; font-size: var(--text-sm); }
 th, td { text-align: left; padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--nectar-aubergine-100); }
 th { font-family: var(--font-accent); }
@@ -238,7 +294,7 @@ th { font-family: var(--font-accent); }
     <div class="tagline">laat je impact zien</div>
     <h1 style="margin-top: var(--space-8); color: var(--nectar-creme-100);">Design guide</h1>
     <p style="color: var(--nectar-aubergine-100);">Eén bron van waarheid voor de Nectar-huisstijl in website, app en rapporten. Kleuren en fonts zijn nu de <strong style="color: var(--nectar-creme-100);">definitieve merkwaarden</strong> zoals aangeleverd door de designer (juli 2026).</p>
-    <span class="version-pill">v0.3 — definitieve fonts (Recoleta · Michroma · Oak Sans), definitief kleurenpalet en kleurvlak-regels</span>
+    <span class="version-pill">v0.4 — app-componenten (§09): knoppen, kaarten, tabs, modals, tabellen, save-bar, skeletons</span>
   </div>
 </header>
 
@@ -590,10 +646,166 @@ th { font-family: var(--font-accent); }
   </div>
 </section>
 
-<!-- ===================== 9. CONTENT & TONE ===================== -->
+<!-- ===================== 9. APP-COMPONENTEN ===================== -->
 <section>
   <div class="inner">
-    <span class="eyebrow">09 · content & tone of voice</span>
+    <span class="eyebrow">09 · app-componenten</span>
+    <h2>App-componenten</h2>
+    <p>Concrete uitwerking van §08: de componenten die de app vandaag hardgecodeerd tekent — knoppen, kaarten, tabs, modals, tabellen, save-bar en laadstatus — hertekend op de bestaande tokens. Puur additief: geen nieuwe tokenwaarden, alleen nieuwe componentregels/-klassen.</p>
+
+    <h3>Knoppen — app-maat</h3>
+    <p>Zelfde knoppen als §06, maar compacter voor werkschermen (<code>.btn-sm</code>: <code>space-2 / space-4</code>, <code>text-sm</code>). Eén primaire per scherm. Destructief (<code>.btn-danger</code>) is tekst in <code>--color-error</code> zónder vlak; het rode vlak (<code>.btn-danger-solid</code>) verschijnt pas bij bevestiging in een modal. Raakvlak blijft 44×44px.</p>
+    <div class="demo-block">
+      <div class="demo-row">
+        <button class="btn btn-primary btn-sm">Nieuwe meting</button>
+        <button class="btn btn-secondary btn-sm">Annuleren</button>
+        <button class="btn btn-ghost btn-sm">Meer opties</button>
+        <button class="btn btn-danger btn-sm">Verwijderen</button>
+        <button class="btn btn-primary btn-sm" disabled>Bezig…</button>
+      </div>
+    </div>
+
+    <h3>Kaarten &amp; lijstrijen</h3>
+    <p>Eén schaduw (<code>--shadow-card</code>) i.p.v. de driedelige Material-schaduw die nu tientallen keren herhaald staat. Witte kaart op crème, radius <code>--radius-md</code>. Categorie-accent als dunne rand bovenaan via <code>--cat-*</code>, niet als gekleurd vlak.</p>
+    <div class="card-grid" style="margin-bottom: var(--space-6);">
+      <article class="card">
+        <div class="card-media">bannerbeeld</div>
+        <div class="card-body">
+          <span class="badge info" style="align-self: flex-start;">Meting</span>
+          <h4>Zelfvertrouwen Q3</h4>
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">128 responses · laatst bijgewerkt 12 jul</p>
+          <div style="margin-top: var(--space-2);"><button class="btn btn-secondary btn-sm">Openen</button></div>
+        </div>
+      </article>
+      <div class="kpi">
+        <div class="lbl">deelnemers bereikt</div>
+        <div class="num">1.248</div>
+        <div class="delta">+12% dit kwartaal</div>
+        <div class="lbl" style="margin-top: auto; padding-top: var(--space-3);">KPI-kaart — bestaand (§08)</div>
+      </div>
+      <div class="card">
+        <div class="card-accent" style="background: var(--cat-3);"></div>
+        <div class="card-body">
+          <h4>Sector in beeld</h4>
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">Categorie-accent via <code>--cat-*</code> — een dunne rand bovenaan i.p.v. een gekleurd vlak, zodat kaarten rustig blijven.</p>
+        </div>
+      </div>
+    </div>
+    <div class="list">
+      <div class="list-row">
+        <div class="avatar"></div>
+        <div class="grow"><div style="font-weight: 500;">Impactrapportage 2026</div><div class="sub">Concept · 4 secties</div></div>
+        <span class="badge info">Concept</span>
+      </div>
+      <div class="list-row">
+        <div class="avatar" style="background: var(--nectar-oranje-100);"></div>
+        <div class="grow"><div style="font-weight: 500;">Nulmeting welzijn</div><div class="sub">Gepubliceerd · 12 jul 2026</div></div>
+        <span class="badge success">Actief</span>
+      </div>
+    </div>
+
+    <h3 style="margin-top: var(--space-8);">Tabs</h3>
+    <p>Vervangt de <code>.secondary-tab-*</code>-set (teal). Actief = aubergine tekst met oranje onderlijn, geen gekleurde vlakken. Voor filters een segment-variant (pill): actief = aubergine vlak met crème tekst.</p>
+    <div class="demo-block">
+      <div class="tabs">
+        <div class="tab active">Impact in beeld</div>
+        <div class="tab">Sector in beeld</div>
+        <div class="tab">Metingen</div>
+        <div class="tab">Rapportages</div>
+      </div>
+      <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: var(--space-4) 0 var(--space-3);">Segment-variant (pill) voor filters:</p>
+      <div class="segmented">
+        <span class="seg active">Alle</span>
+        <span class="seg">Actief</span>
+        <span class="seg">Concept</span>
+      </div>
+    </div>
+
+    <h3>Modals &amp; dialogen</h3>
+    <p>Vaste vorm voor de <code>ReactModal</code>-schermen: overlay in aubergine-900 op 45%, paneel wit met <code>--radius-lg</code> en <code>--shadow-raised</code>, titel in display-serif, acties rechtsonder. De destructieve bevestiging is de enige plek met een rood knopvlak.</p>
+    <div class="modal-grid">
+      <div class="modal-overlay">
+        <div class="modal">
+          <div class="modal-head">
+            <h3>Nieuwe meting</h3>
+            <button class="modal-close" aria-label="Sluiten">×</button>
+          </div>
+          <div class="modal-body">
+            <div class="field" style="margin-bottom: 0;">
+              <label for="m1">Naam meting</label>
+              <input id="m1" type="text" value="Welzijn Q4" readonly>
+            </div>
+          </div>
+          <div class="modal-foot">
+            <button class="btn btn-secondary btn-sm">Annuleren</button>
+            <button class="btn btn-primary btn-sm">Aanmaken</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-overlay">
+        <div class="modal">
+          <div class="modal-head" style="padding-bottom: var(--space-2); display: block;">
+            <h3 style="margin-bottom: var(--space-2);">Meting verwijderen?</h3>
+            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">Deze actie kan niet ongedaan worden gemaakt. 128 responses gaan verloren.</p>
+          </div>
+          <div class="modal-foot" style="background: transparent;">
+            <button class="btn btn-secondary btn-sm">Annuleren</button>
+            <button class="btn btn-danger-solid btn-sm">Verwijderen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: var(--space-8);">Tabellen</h3>
+    <p>Kop in Oak Sans (accent) op crème-50, rijen gescheiden door <code>--nectar-aubergine-100</code>, zebra in crème-50 en hover licht oranje. Op mobiel worden rijen kaartlijsten (§08-regel).</p>
+    <div class="table-card">
+      <table class="data-table">
+        <thead>
+          <tr><th>Meting</th><th>Responses</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Zelfvertrouwen Q3</td><td>128</td><td><span class="badge success">Actief</span></td></tr>
+          <tr><td>Welzijn nulmeting</td><td>64</td><td><span class="badge warning">Respons laag</span></td></tr>
+          <tr><td>Arbeidsparticipatie</td><td>—</td><td><span class="badge info">Concept</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top: var(--space-8);">Save-bar &amp; skeletons</h3>
+    <p>De <code>.save-bar</code> is nu een groene balk met groene knop — hier crème-50 met schaduw naar boven en de primaire actie in oranje. En de §08-regel "skeletons in crème-50, geen spinners" concreet gemaakt: dezelfde vorm als de kaart die laadt.</p>
+    <div class="card" style="max-width: 640px; margin-bottom: var(--space-6);">
+      <div style="padding: var(--space-8); color: var(--color-text-muted); font-size: var(--text-sm);">Formulierinhoud…</div>
+      <div class="save-bar">
+        <button class="btn btn-secondary btn-sm">Annuleren</button>
+        <button class="btn btn-primary btn-sm">Opslaan</button>
+      </div>
+    </div>
+    <div class="demo-row" style="align-items: stretch;">
+      <div class="skeleton">
+        <div class="skeleton-line" style="height: 12px; width: 60%;"></div>
+        <div class="skeleton-line" style="height: 28px; width: 80%;"></div>
+        <div class="skeleton-line" style="height: 12px; width: 40%;"></div>
+      </div>
+      <p style="font-size: var(--text-sm); color: var(--color-text-muted); max-width: 32ch; align-self: center; margin: 0;">Skeleton in crème-50 met dunne aubergine-100 rand — dezelfde vorm als de KPI-kaart die laadt. Geen spinner op paginaniveau.</p>
+    </div>
+
+    <h3 style="margin-top: var(--space-8);">Wat elk component vervangt</h3>
+    <div class="note">
+      <ul style="margin: 0; padding-left: var(--space-6);">
+        <li style="margin-bottom: var(--space-2);"><strong>Kaart/lijst/artikel</strong> → één schaduwtoken vervangt de tientallen keren herhaalde 3-delige schaduw in <code>main.css</code>, <code>layout/</code>, <code>old/</code>.</li>
+        <li style="margin-bottom: var(--space-2);"><strong>Tabs</strong> → vervangt de <code>.secondary-tab-*</code> (teal) in <code>main.css</code>.</li>
+        <li style="margin-bottom: var(--space-2);"><strong>Modal</strong> → vaste vorm voor de <code>ReactModal</code>-schermen; de losse rode knoppen worden de destructieve variant.</li>
+        <li style="margin-bottom: var(--space-2);"><strong>Save-bar</strong> → vervangt de groene <code>.save-bar</code> in <code>main.css</code>.</li>
+        <li><strong>Skeleton</strong> → vervangt de <code>.spinner-container</code> (GIF).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 10. CONTENT & TONE ===================== -->
+<section>
+  <div class="inner">
+    <span class="eyebrow">10 · content & tone of voice</span>
     <h2>Schrijfwijzer</h2>
     <div class="dodont">
       <div class="do"><strong>✓ Wel</strong>
@@ -607,10 +819,10 @@ th { font-family: var(--font-accent); }
   </div>
 </section>
 
-<!-- ===================== 10. TOEGANKELIJKHEID ===================== -->
+<!-- ===================== 11. TOEGANKELIJKHEID ===================== -->
 <section>
   <div class="inner">
-    <span class="eyebrow">10 · toegankelijkheid</span>
+    <span class="eyebrow">11 · toegankelijkheid</span>
     <h2>Toegankelijkheid (WCAG 2.2 AA)</h2>
     <ul style="max-width: 65ch;">
       <li>Contrast: 4,5:1 voor tekst, 3:1 voor grote tekst en UI-elementen. Oranje 500 nooit voor kleine tekst op crème.</li>
@@ -623,10 +835,10 @@ th { font-family: var(--font-accent); }
   </div>
 </section>
 
-<!-- ===================== 11. TOKENS ===================== -->
+<!-- ===================== 12. TOKENS ===================== -->
 <section>
   <div class="inner">
-    <span class="eyebrow">11 · tokens</span>
+    <span class="eyebrow">12 · tokens</span>
     <h2>Design tokens (CSS)</h2>
     <p>Kopieer dit blok als <code>tokens.css</code> in website én app, zodat beide dezelfde bron delen. In React: importeer één keer globaal en gebruik <code>var(--...)</code> in alle componenten.</p>
     <pre>:root {
@@ -654,24 +866,26 @@ th { font-family: var(--font-accent); }
   </div>
 </section>
 
-<!-- ===================== 12. GOVERNANCE ===================== -->
+<!-- ===================== 13. GOVERNANCE ===================== -->
 <section style="border-bottom: none;">
   <div class="inner">
-    <span class="eyebrow">12 · beheer</span>
+    <span class="eyebrow">13 · beheer</span>
     <h2>Versies &amp; nog te doen</h2>
     <table>
       <tr><th>Versie</th><th>Datum</th><th>Wijziging</th></tr>
       <tr><td>v0.1</td><td>15 juli 2026</td><td>Eerste versie op basis van brandbook-PDF</td></tr>
       <tr><td>v0.2</td><td>15 juli 2026</td><td>Website-sectie en app-sectie (voorzet) toegevoegd: app-shell, KPI-kaarten, benchmark-balken, empty state, toast</td></tr>
       <tr><td>v0.3</td><td>15 juli 2026</td><td>Definitieve merkbestanden verwerkt: fonts (Recoleta, Michroma, Oak Sans + Segoe Script) via lokale <code>@font-face</code>; definitief kleurenpalet (#412944 / #ef8a53 / #fcf8f0 / #282d31 / #435c52); 4 categorie-kleurvlakken; kleurvlak-/tekstcombinatie-regels; logo- en beeldmerk-SVG opgenomen</td></tr>
+      <tr><td>v0.4</td><td>15 juli 2026</td><td>§09 app-componenten toegevoegd (uit design-handoff): app-maat + destructieve knoppen, kaarten/lijstrijen, tabs + segment-pills, modals, data-tabel, save-bar en skeletons — als herbruikbare klassen op bestaande tokens</td></tr>
     </table>
-    <h3 style="margin-top: var(--space-8);">Openstaand voor v0.4</h3>
+    <h3 style="margin-top: var(--space-8);">Openstaand voor v0.5</h3>
     <ul style="max-width: 65ch;">
       <li><strong>Logo-kleuren afstemmen:</strong> <code>nectar-logo.svg</code> gebruikt #fd8144/#452846, het palet #ef8a53/#412944 — bevestigen welke leidend is en het SVG evt. hertekenen.</li>
       <li><strong>Aubergine tekstvlak:</strong> bronspec noemt zowel #412944 als #48344c voor het grote aubergine-vlak — één waarde vaststellen.</li>
       <li><strong>Logo op donker:</strong> crème/witte logo-variant aanleveren voor aubergine- en oranje-vlakken.</li>
       <li><strong>Segoe Script</strong> een vaste rol geven of schrappen (nu alleen beschikbaar als <code>--font-script</code>).</li>
-      <li>App-componenten uitbreiden: tabellen/kaartlijsten, modals, filters, heatmap voor subtypen, AI-assistent (Decca) chat-patroon.</li>
+      <li>App-componenten verder uitbreiden: heatmap voor subtypen, AI-assistent (Decca) chat-patroon (basisset knoppen/kaarten/tabs/modals/tabellen/save-bar staat in §09).</li>
+      <li>§09-componenten daadwerkelijk in de app-CSS migreren (vervangt <code>main.css</code>-varianten — zie §09 "wat elk component vervangt").</li>
       <li>Mobiele bottom-nav en responsive gedrag van dashboards uitwerken.</li>
       <li>Fotografie-richtlijnen uitwerken (stijl, rechten, hexagon-maskers).</li>
       <li>Dark mode: bepalen of aubergine-basis als donker thema volstaat.</li>
