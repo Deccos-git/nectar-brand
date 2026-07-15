@@ -1,8 +1,8 @@
 {
   "name": "nectar-brand",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Nectar huisstijl — single source of truth (tokens + style guide).",
-  "files": ["tokens.css", "styleguide.html"],
+  "files": ["tokens.css", "styleguide.html", "fonts"],
   "license": "UNLICENSED",
   "private": true
 }
